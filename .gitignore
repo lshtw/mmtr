@@ -1,0 +1,96 @@
+Skip to content
+
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ @lshtw Sign out
+237
+5,186 521 guardian/frontend
+ Code  Issues 27  Pull requests 13  Projects 1  Wiki  Insights
+frontend/.gitignore
+51b96a9  on 12 Mar
+@jeteve jeteve Targeting by series works in unit test
+@rich-nguyen @OliverJAsh @sndrs @kaelig @daithiocrualaoich @phamann @mattosborn @gklopper @ironsidevsquincy @mattandrews @NataliaLKB @paulrobertlloyd @commuterjoy @mario-galic @jeteve @gidsg @TBonnin @stephanfowler @regiskuckaertz @meza @kelvin-chappell @jranks123 @gtrufitt @janua @chrisfinch @ahume
+
+80 lines (57 sloc)  692 Bytes
+artifacts.zip
+/dist
+/coverage
+
+*.min.css
+*.min.css.map
+*.csv
+*.iml
+*.box
+*.log
+
+.DS_Store
+.idea
+.sass-cache
+.tm_properties
+.node-version
+.sbt
+.sbt.*
+
+log
+logs
+ivy-sbt
+
+tmp
+old
+target
+.target
+/*/bin/
+dist
+
+RUNNING_PID
+
+*.sublime-*
+
+local.sbt
+
+node_modules
+
+screenshots
+
+common/conf/assets
+
+.eslintcache
+
+*-spec-runner.html
+
+static/hash
+static/transpiled
+static/target
+static/riffraff
+
+static/src/stylesheets/icons/*
+
+
+# emacs temp #
+**~
+
+# Eclipse #
+.project
+.settings/
+.metadata
+.classpath
+.springBeans
+.cache
+
+# Scala test framework #
+local.conf
+
+static/src/stylesheets/pasteup/.npmrc
+
+# http://ensime.github.io/
+.ensime
+.ensime_cache/
+
+# SSL certificates
+*.crt
+*.key
+.vscode/settings.json
