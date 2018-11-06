@@ -19,6 +19,7 @@ frontend/.gitignore
 artifacts.zip
 /dist
 /coverage
+/build
 
 *.min.css
 *.min.css.map

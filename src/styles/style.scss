@@ -1,0 +1,149 @@
+@import "vars";
+@import "fonts";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 1920px;
+  background: url("../img/bg1.png") no-repeat;
+  height: 2000px;
+  z-index: 2;
+}
+
+.container {
+  width: 1235px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-top: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  line-height: 0;
+  &-logo {
+    flex: 1;
+  }
+}
+
+.navigation {
+  display: inline-block;
+  vertical-align: middle;
+  &__item {
+    text-underline: none;
+    text-decoration: none;
+    font-size: 19px;
+    color: map_get($colors, head-color);
+    font-family: 'Brown', sans-serif;
+    margin-right: 50px;
+  }
+  &__item:last-child {
+    margin-right: 30px;
+  }
+}
+.button-sign-in {
+  margin-right: 20px;
+  background-color: #845cff;
+  border-radius: 3px;
+  border: 0;
+  height: 42px;
+  width: 102px;
+  &__text {
+    color: #fff;
+    display: block;
+    font-size: 19px;
+    font-family: 'Brown', sans-serif;
+    padding: 5px 10px;
+  }
+}
+.balance-agility {
+  width: 464px;
+  height: 382px;
+  margin-top: 282px;
+}
+.article-header {
+  font-size: 48px;
+}
+.improve {
+  //width: 560px;
+  //width: 45.3443%;
+  height: 479px;
+  display: inline-block;
+  margin-right: 115px;
+  & .article-header {
+    font-size: 48px;
+    padding: 225px 35px 20px 0;
+  }
+}
+.product-card {
+  height: 479px;
+  //width: 560px;
+  //width: 45.3443%;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: -8px 7px 8px -5px #f9f9fe;
+}
+.paragraph {
+  font-size: 23px;
+}
+.left {
+  display: inline-block;
+  width: 45.344%;
+  margin-right: 110px;
+}
+.right {
+  display: inline-block;
+  width: 45.344%;
+}
+.customers-card {
+  width: 20.22%;
+  &__image {
+    display: block;
+    margin: 0 auto 47px;
+  }
+  &__header {
+    font-family: 'Brown Regular', sans-serif;
+    font-size: 20px;
+    color: map_get($colors, head-card-color);
+    margin-bottom: 18px;
+  }
+  &__text {
+    font-family: 'Brown Light', sans-serif;
+    font-size: 16px;
+  }
+}
+.customers {
+  background: url("../img/bg2.png") no-repeat 0 44%;
+  &__header {
+    font-family: 'Brown Light', sans-serif;
+    font-size: 48px;
+    color: map_get($colors, head-color);
+  }
+  &__paragraph {
+    font-family: 'Brown Light', sans-serif;
+    font-size: 23px;
+    color: map_get($colors, text-color);
+    padding: 0 13%;
+    margin-bottom: 145px
+  }
+}
+.customers-cards {
+  &__row {
+    margin-bottom: 178px;
+  }&__row:last-child {
+     padding-bottom: 463px;
+   }
+}
+.space_between {
+  justify-content: space-between;
+}
+.flex_row {
+  display: flex;
+}
+.text_center {
+  text-align: center;
+}

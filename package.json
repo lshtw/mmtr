@@ -15,5 +15,16 @@
   "bugs": {
     "url": "https://github.com/lshtw/mmtr/issues"
   },
-  "homepage": "https://github.com/lshtw/mmtr#readme"
+  "homepage": "https://github.com/lshtw/mmtr#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1",
+    "gulp-watch": "^5.0.1"
+  }
 }

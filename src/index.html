@@ -2,49 +2,164 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css"/>
 </head>
 <body>
-<div class="container">
-    <header class="header">
-        <a href="/">
-            <img src="images/logo.png" alt="Логотип" class="header__logo"></a>
-        <nav class="navigation">
-            <ul class="navigation-list">
-                <li class="navigation-list__item"><a href="#">Aktuelles</a></li>
-                <li class="navigation-list__item"><a href="#">Philosophie</a></li>
-                <li class="navigation-list__item"><a href="#">Besonderheiten</a></li>
-                <li class="navigation-list__item"><a href="#">Partner</a></li>
-                <li class="navigation-list__item"><a href="#">Kontakt</a></li>
-                <li class="navigation-list__item"><a href="#">Impressum</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="main-content">
-        <div class="main-content__img">
-            <img src="images/content.png" alt="Фото компании">
+    <div class="container">
+        <header class="header">
+           <div class="header-logo">
+               <img src="img/logo.png" class="header-logo__image" alt="Logo">
+           </div>
+
+            <nav class="navigation">
+                <a href="" class="navigation__item">Product</a>
+                <a href="" class="navigation__item">Customers</a>
+                <a href="" class="navigation__item">Pricing</a>
+                <a href="" class="navigation__item">Docs</a>
+            </nav>
+            <button class="button-sign-in"><span class="button-sign-in__text">Sign In</span></button>
+        </header>
+        <div class="balance-agility">
+            <h2 class="article-header">Balance agility with stability!</h2>
+            <p>
+                Gohub monitors application stability, so you can make data-driven
+                decisions on whether you should be building new features, or fixing bugs.
+            </p>
         </div>
-        <article>
-            <div class="main-content__left-column">
-            <h1 class="left-column__head-text">Sehr geehrte Patienten,</h1>
-            <p class="left-column__paragraph">wir freuen uns, dass Sie sich für unsere Praxis für moderne Zahnheilkunde interessieren – herzlich willkommen!</p>
-            <p class="left-column__paragraph">Die Homepage soll Ihnen einen ersten Einblick in das Leistungsspektrum und die Behandlungsphilosophie vermitteln. Es wird Sie interessieren, wie schonend und sorgsam ein Zahnarztbesuch sein kann.</p>
-            <p class="left-column__paragraph">Sie sind herzlich eingeladen, sich bei einem Besuch in meiner Praxis mit ihren Fragen und Wünschen anzuvertrauen.</p>
-            <p class="left-column__paragraph">Ihre Dr. Dr. Günther Chmelitschek und Dr. Thomas Chmelitschek</p>
+
+        <div class="left">
+            <div class="improve">
+                <h2 class="article-header">Improve the stability of your application</h2>
+                <p class="paragraph">
+                    Bugsnag monitors application stability, so you can make data-driven decisions on whether you
+                    should be building new features, or fixing bugs.
+                </p>
             </div>
-        </article>
-        <div class="main-content__right-column">
-            <h1 class="right-column__head-text">Sprechzeiten</h1>
-            <p class="right-column__paragraph">Zahnarztpraxis Dr. Dr. Chmelitschek<br>
-                Stollstr. 6<br>
-                83022 Rosenheim</p>
-            <p class="right-column__paragraph">Mo-Fr von 08:00-18:00 Uhr <br>
-                und nach Vereinbarung   </p>
+
+            <div class="product-card">
+                <img src="img/monitor-online.png" alt="">
+                <span class="product-card__header">Monitor online</span>
+                <p class="product-card__paragraph">
+                    The platform has multiple functionalities and key features.
+                    With our intelligent system, you can approve bookings and monitor everything in your business online.
+                </p>
+            </div>
         </div>
-    </main>
-    <footer class="footer">
-        <p>Zahnarztpraxis Chmelitschek © 2011</p>
-    </footer>
-</div>
+        <div class="right">
+            <div class="product-card">
+                <img src="img/be-visible.png" alt="">
+                <span class="product-card__header">Be visible to "like"</span>
+                <p class="product-card__paragraph">
+                    Strengthen your digital visibility in a universe where
+                    everyone is interested in travelling and renting gears.
+                    We help you build your presence and make you
+                    relevant without you having to lift a finger!
+                </p>
+            </div>
+
+            <div class="product-card">
+                <img src="img/more.png" alt="">
+                <span class="product-card__header">More income</span>
+                <p class="product-card__paragraph">
+                    Being on a digital platform is another sales channel added to strengthen your business.
+                    More work, in your hands. With our insights tools, we analyze your gear's performance in any season
+                </p>
+            </div>
+        </div>
+    </div>
+        <div class="customers">
+            <div class="container">
+            <header class="customers__header text_center">Proof makes increasing conversions simple</header>
+            <p class="customers__paragraph text_center">Getting a conversion boost didn’t used to be this easy.
+                Luckily, you found Proof. Now you have the tools to let your customer do the selling for you.
+            </p>
+            <div class="customers-cards">
+                <div class="customers-cards__row flex_row space_between">
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card1.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Higher Conversions</h2>
+                        <p class="customers-card__text text_center">Convert more website visitors into signups and purchases.
+                        </p>
+                    </div>
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card2.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Save on Acquisition</h2>
+                        <p class="customers-card__text text_center">Your advertising spend will go further than ever before.
+                        </p>
+                    </div>
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card3.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Increase Visitor Trust</h2>
+                        <p class="customers-card__text text_center">People trust companies they see other people buy from as well.
+                        </p>
+                    </div>
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card4.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Social Influence</h2>
+                        <p class="customers-card__text text_center">Seeing other visitors taking action creates fear of missing out.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="customers-cards__row flex_row space_between">
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card5.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Activity Notifications</h2>
+                        <p class="customers-card__text text_center">Display recent sales and opt-ins on your pages and drive visitors to
+                        </p>
+                    </div>
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card6.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Customer Journeys</h2>
+                        <p class="customers-card__text text_center">Your advertising spend will go further than ever before.
+                        </p>
+                    </div>
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card7.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Custom Timing</h2>
+                        <p class="customers-card__text text_center">Control when, how long and how fast notifications display on your
+                        </p>
+                    </div>
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card8.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Live Visitor Count</h2>
+                        <p class="customers-card__text text_center">Show how many visitors are browsing your site - "28 people are
+                        </p>
+                    </div>
+                </div>
+                <div class="customers-cards__row flex_row space_between">
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card9.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Visitor Identification</h2>
+                        <p class="customers-card__text text_center">We'll show you detailed profiles of every visitor who enters their
+                        </p>
+                    </div>
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card10.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Custom Rules</h2>
+                        <p class="customers-card__text text_center">Granular control over how and when notifications display on your
+                        </p>
+                    </div>
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card11.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Mobile Optimized</h2>
+                        <p class="customers-card__text text_center">With mobile traffic approaching 70%, Proof looks amazing on
+                        </p>
+                    </div>
+                    <div class="customers-card">
+                        <img src="img/customer-cards/card12.png" alt="card image" class="customers-card__image">
+                        <h2 class="customers-card__header text_center">Language Translation</h2>
+                        <p class="customers-card__text text_center">Translate Recent Activity notification into any language you want.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="block-safety">
+
+        </div>
+    </div>
 </body>
 </html>
