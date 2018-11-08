@@ -1,11 +1,6 @@
 @import "vars";
 @import "fonts";
 
-* {
-  padding: 0;
-  margin: 0;
-}
-
 body {
   width: 1920px;
   background: url("../img/bg1.png") no-repeat;
@@ -37,12 +32,20 @@ body {
     text-decoration: none;
     font-size: 19px;
     color: map_get($colors, head-color);
-    font-family: 'Brown', sans-serif;
+    font-family: 'Brown Bold', sans-serif;
     margin-right: 50px;
   }
   &__item:last-child {
     margin-right: 30px;
   }
+}
+.button {
+  background-color: #845cff;
+  border: 0;
+  border-radius: 3px;
+  color: #fff;
+  font: 15px 'Brown Bold';
+  text-transform: uppercase;
 }
 .button-sign-in {
   margin-right: 20px;
@@ -59,13 +62,30 @@ body {
     padding: 5px 10px;
   }
 }
-.balance-agility {
-  width: 464px;
+.about-product {
+  width: 470px;
   height: 382px;
-  margin-top: 282px;
+  margin-top: 262px;
+  margin-bottom: 136px;
+  &__header {
+    font: 48px 'Brown Bold';
+    color: map_get($colors, head-color);
+  }
+  &__text {
+    margin-bottom: 42px;
+  }
 }
-.article-header {
-  font-size: 48px;
+.start-product{
+  &__button {
+  width: 142px;
+  height: 42px;
+  }
+}
+.feedback {
+  &__link {
+    font: 19px 'Brown Regular';
+    color: map_get($colors, head-color);
+  }
 }
 .improve {
   //width: 560px;
@@ -78,7 +98,7 @@ body {
     padding: 225px 35px 20px 0;
   }
 }
-.product-card {
+.feature-card-wrapper {
   height: 479px;
   //width: 560px;
   //width: 45.3443%;
@@ -87,20 +107,25 @@ body {
   border-radius: 3px;
   box-shadow: -8px 7px 8px -5px #f9f9fe;
 }
-.paragraph {
-  font-size: 23px;
+.card_indent {
+  padding: 58px 66px 96px;
 }
-.left {
-  display: inline-block;
-  width: 45.344%;
-  margin-right: 110px;
+.feature-card__image {
+  display: block;
+  margin-bottom: 55px;
 }
-.right {
-  display: inline-block;
-  width: 45.344%;
+.feature-card__header {
+  font: 30px 'Brown Light';
+  margin-bottom: 30px;
 }
+.text_paragraph {
+  font: 23px 'Brown Light';
+  color: map_get($colors, text-color);
+}
+
 .customers-card {
-  width: 20.22%;
+  width: 20.224%;
+  height: 210px;
   &__image {
     display: block;
     margin: 0 auto 47px;
@@ -117,7 +142,7 @@ body {
   }
 }
 .customers {
-  background: url("../img/bg2.png") no-repeat 0 44%;
+  background: url("../img/bg2.png") no-repeat 0 64%;
   &__header {
     font-family: 'Brown Light', sans-serif;
     font-size: 48px;
@@ -146,4 +171,15 @@ body {
 }
 .text_center {
   text-align: center;
+}
+.finances {
+  background: url("../img/finances.png") no-repeat top right;
+}
+.head_text {
+  font-family: 'Brown Light', sans-serif;
+  font-size: 48px;
+  color: map_get($colors, head-color);
+}
+.demo-request {
+  background-color: #fafaff;
 }
