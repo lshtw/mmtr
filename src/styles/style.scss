@@ -13,6 +13,47 @@ body {
   margin: 0 auto;
 }
 
+.button {
+  background-color: #845cff;
+  border: 0;
+  border-radius: 3px;
+  color: #fff;
+  font: 15px 'Brown Bold';
+  text-transform: uppercase;
+}
+
+.text_paragraph {
+  font: 23px 'Brown Light';
+  color: map_get($colors, text-color);
+}
+
+.space_between {
+  justify-content: space-between;
+}
+
+.flex_row {
+  display: flex;
+  align-items: center;
+}
+
+.text_center {
+  text-align: center;
+}
+
+.medium_header {
+  font: 30px 'Brown Light';
+}
+
+.head_text {
+  font-family: 'Brown Light', sans-serif;
+  font-size: 48px;
+  color: map_get($colors, head-color);
+}
+
+.list_without_marks {
+  list-style-type: none;
+}
+
 .header {
   margin-top: 50px;
   display: flex;
@@ -39,14 +80,7 @@ body {
     margin-right: 30px;
   }
 }
-.button {
-  background-color: #845cff;
-  border: 0;
-  border-radius: 3px;
-  color: #fff;
-  font: 15px 'Brown Bold';
-  text-transform: uppercase;
-}
+
 .button-sign-in {
   margin-right: 20px;
   background-color: #845cff;
@@ -62,6 +96,7 @@ body {
     padding: 5px 10px;
   }
 }
+
 .about-product {
   width: 470px;
   height: 382px;
@@ -75,52 +110,59 @@ body {
     margin-bottom: 42px;
   }
 }
-.start-product{
+
+.start-product {
   &__button {
-  width: 142px;
-  height: 42px;
+    width: 142px;
+    height: 42px;
+    margin-right: 34px;
   }
 }
+
 .feedback {
   &__link {
     font: 19px 'Brown Regular';
     color: map_get($colors, head-color);
   }
 }
+
 .improve {
-  //width: 560px;
-  //width: 45.3443%;
+  width: 555px;
   height: 479px;
   display: inline-block;
   margin-right: 115px;
   & .article-header {
     font-size: 48px;
-    padding: 225px 35px 20px 0;
+    padding: 146px 35px 0 0;
   }
 }
+
 .feature-card-wrapper {
   height: 479px;
-  //width: 560px;
-  //width: 45.3443%;
+  width: 560px;
+  margin-bottom: 60px;
   display: inline-block;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: -8px 7px 8px -5px #f9f9fe;
 }
+
 .card_indent {
-  padding: 58px 66px 96px;
+  padding: 58px 56px 96px;
 }
-.feature-card__image {
-  display: block;
-  margin-bottom: 55px;
-}
-.feature-card__header {
-  font: 30px 'Brown Light';
-  margin-bottom: 30px;
-}
-.text_paragraph {
-  font: 23px 'Brown Light';
-  color: map_get($colors, text-color);
+
+.feature-card {
+  &__image {
+    display: block;
+    margin-bottom: 55px;
+  }
+  &__header {
+    margin-bottom: 30px;
+  }
+  &__paragraph {
+    font: 18px 'Brown Light';
+    color: map_get($colors, text-color);
+  }
 }
 
 .customers-card {
@@ -141,45 +183,178 @@ body {
     font-size: 16px;
   }
 }
+
 .customers {
   background: url("../img/bg2.png") no-repeat 0 64%;
-  &__header {
-    font-family: 'Brown Light', sans-serif;
-    font-size: 48px;
-    color: map_get($colors, head-color);
-  }
+  margin-top: 200px;
+  padding: 0 13%;
+  margin-bottom: 145px;
   &__paragraph {
-    font-family: 'Brown Light', sans-serif;
-    font-size: 23px;
-    color: map_get($colors, text-color);
     padding: 0 13%;
     margin-bottom: 145px
   }
 }
+
 .customers-cards {
   &__row {
     margin-bottom: 178px;
-  }&__row:last-child {
-     padding-bottom: 463px;
-   }
+  }
+  &__row:last-child {
+    padding-bottom: 463px;
+  }
 }
-.space_between {
-  justify-content: space-between;
-}
-.flex_row {
-  display: flex;
-}
-.text_center {
-  text-align: center;
-}
+
 .finances {
   background: url("../img/finances.png") no-repeat top right;
+  &__header {
+    padding-top: 68px;
+  }
+  &__description {
+    width: 660px;
+    margin-bottom: 167px;
+  }
+  & .flew_row {
+    margin-bottom: 105px;
+  }
+  & .flex_row:last-child {
+    margin-bottom: 196px;
+  }
 }
-.head_text {
-  font-family: 'Brown Light', sans-serif;
-  font-size: 48px;
-  color: map_get($colors, head-color);
-}
+
 .demo-request {
   background-color: #fafaff;
+  &__content {
+    padding: 70px 0;
+  }
+}
+
+.safety {
+  width: 560px;
+}
+
+.drive, .ride {
+  width: 200px;
+  &__text {
+    font: 16px 'Brown Light';
+    color: map_get($colors, text-color);
+  }
+}
+.help-drivers {
+  margin-bottom: 250px;
+}
+.advantages {
+  &__header {
+    font: 30px 'Brown Regular';
+    color: map_get($colors, head-color);
+  }
+  &-list {
+    margin-bottom: 105px;
+    padding: 0;
+    &__item {
+      font: 20px 'Brown Light';
+    }
+    &__item:before {
+      content: url("../img/check.svg");
+      vertical-align: middle;
+      margin-right: 19px;
+    }
+  }
+}
+
+.get-started {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  &__header {
+    margin: 44px 0 42px;
+  }
+  &__description {
+    margin: 0;
+  }
+}
+
+.get-started-form {
+  background-color: #ffffff;
+  &__input {
+    height: 82px;
+    width: 360px;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    vertical-align: middle;
+    font: 23px 'Brown Light';
+    color: map_get($colors, text-color);
+    padding-left: 39px;
+  }
+  &__button {
+    border: none;
+    vertical-align: middle;
+    background-color: white;
+    margin-right: 30px;
+  }
+}
+
+.footer {
+  background-color: map_get($colors, head-card-color);
+  &__content {
+    padding: 150px 0 100px 0;
+    color: #ffffff;
+    align-items: flex-start;
+  }
+}
+
+.contacts {
+  &__logo {
+    margin-bottom: 54px;
+  }
+  &__phone {
+    display: block;
+    font: 16px 'Brown Light';
+  }
+  &__link {
+    margin: 46px 0;
+    display: block;
+    font: 16px 'Brown Regular';
+  }
+}
+
+.social-network {
+  &-list {
+    padding: 0;
+    &__item {
+      display: inline-block;
+      margin-right: 30px;
+    }
+  }
+}
+
+.sites {
+  font: 16px 'Brown Regular';
+  align-items: flex-start;
+  &-list {
+    margin: 0;
+    &__item {
+      line-height: 16px;
+      margin-bottom: 34px;
+    }
+  }
+}
+
+.start-button-text {
+  font: 15px 'Brown Bold';
+  color: #845cff;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.copyright, .footer-links {
+  font: 16px 'Brown Light';
+  color: #555377;
+  margin-bottom: 98px;
+}
+
+.footer-links {
+  &__item {
+    margin-left: 40px;
+  }
 }
