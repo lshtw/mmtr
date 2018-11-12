@@ -261,6 +261,10 @@ body {
   }
 }
 
+.drive-ride {
+  margin-bottom: 56px;
+}
+
 .drive, .ride {
   width: 200px;
   &__text {
@@ -281,6 +285,7 @@ body {
     margin-bottom: 60px;
   }
   &-list {
+    @extend .list_without_marks;
     margin-bottom: 105px;
     padding: 0;
     &__item {
@@ -359,6 +364,7 @@ body {
 
 .social-network {
   &-list {
+    @extend .list_without_marks;
     padding: 0;
     &__item {
       display: inline-block;
@@ -371,6 +377,7 @@ body {
   font: 16px 'Brown Light';
   align-items: flex-start;
   &-list {
+    @extend .list_without_marks;
     margin: 0;
     &__item {
       line-height: 16px;
