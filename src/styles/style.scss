@@ -128,12 +128,24 @@ body {
     color: map_get($colors, head-color);
   }
 }
+.features {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
 .improve {
-  width: 555px;
+  //width: 555px;
+  flex-basis: 45.34%;
   height: 479px;
   display: inline-block;
   margin-right: 115px;
+  @media screen and (max-width: 765px) {
+    text-align: center;
+    margin: 0 auto;
+    flex-basis: 100%;
+  }
   &__header {
     @extend .head_text;
     font-size: 48px;
@@ -146,22 +158,33 @@ body {
 
 .feature-card-wrapper {
   height: 479px;
-  width: 560px;
+  flex-basis: 45.34%;
+  //width: 560px;
   margin-bottom: 60px;
-  display: inline-block;
+  //display: inline-block;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: -8px 7px 8px -5px #f9f9fe;
+  @media screen and (max-width: 765px) {
+    flex-basis: 100%;
+  }
 }
 
 .card_indent {
-  padding: 58px 56px 96px;
+  //padding: 58px 56px 96px;
+  padding: 10.36% 10% 17.15%;
 }
 
 .feature-card {
+  @media screen and (max-width: 765px) {
+    text-align: center;
+  }
   &__image {
     display: block;
     margin-bottom: 55px;
+    @media screen and (max-width: 765px) {
+      margin: 0 auto;
+    }
   }
   &__header {
     @extend .medium_header;
@@ -294,7 +317,20 @@ body {
   padding: 0 17.839%;
   margin-bottom: 250px;
 }
+.advantages-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
 .advantages {
+  flex-basis: 50%;
+  &:first-child {
+    flex-basis: 100%;
+  }
+  @media screen and (max-width: 765px) {
+    flex-basis: 100%;
+  }
   &__header {
     font: 30px 'Brown Regular';
     color: map_get($colors, head-color);
