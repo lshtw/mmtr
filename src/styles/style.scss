@@ -350,21 +350,6 @@ body {
   }
 }
 
-
-.drive-ride {
-  margin-bottom: 56px;
-}
-
-.drive, .ride {
-  width: 200px;
-  &__text {
-    font: 16px 'Brown Light';
-    color: map_get($colors, text-color);
-  }
-  &__header {
-    @extend .medium_header;
-  }
-}
 .help-drivers {
   display: flex;
   justify-content: space-between;
