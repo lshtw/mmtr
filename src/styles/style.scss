@@ -194,6 +194,8 @@ body {
 }
 
 .start-product {
+  display: flex;
+  align-items: center;
   &__button {
     width: 142px;
     height: 42px;
@@ -461,27 +463,32 @@ body {
 .footer {
   background-color: map_get($colors, head-card-color);
   &__content {
-    padding: 150px 0 100px 0;
     color: #ffffff;
     align-items: flex-start;
+    padding: 150px 17.839% 100px;
+    display: flex;
+    justify-content: space-between;
+    &-contacts {
+      &-logo {
+        margin-bottom: 54px;
+      }
+      &-phone {
+        display: block;
+        font: 16px 'Brown Light';
+      }
+      &-link {
+        margin: 46px 0;
+        display: block;
+        font: 16px 'Brown Regular';
+      }
+    }
+  }
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 17.839% 98px;
   }
 }
-
-.contacts {
-  &__logo {
-    margin-bottom: 54px;
-  }
-  &__phone {
-    display: block;
-    font: 16px 'Brown Light';
-  }
-  &__link {
-    margin: 46px 0;
-    display: block;
-    font: 16px 'Brown Regular';
-  }
-}
-
 .social-network {
   &-list {
     @extend .list_without_marks;
@@ -495,6 +502,8 @@ body {
 
 .links {
   font: 16px 'Brown Light';
+  display: flex;
+  justify-content: space-between;
   align-items: flex-start;
   &-list {
     @extend .list_without_marks;
@@ -523,7 +532,6 @@ body {
 .copyright, .footer-links {
   font: 16px 'Brown Light';
   color: #555377;
-  margin-bottom: 98px;
 }
 
 .footer-links {
