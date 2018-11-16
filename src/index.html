@@ -11,13 +11,24 @@
         <div class="header-logo">
             <img src="img/logo.png" class="header-logo__image" alt="Logo">
         </div>
+        <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+        <label class="btn-menu" for="hmt">
+            <span class="first"></span>
+            <span class="second"></span>
+            <span class="third"></span>
+        </label>
+        <ul class="hidden-menu">
+            <li><a href="">Link 1</a></li>
+            <li><a href="">Link 2</a></li>
+            <li><a href="">Link 3</a></li>
+        </ul>
         <nav class="navigation">
             <a href="" class="navigation__item">Product</a>
             <a href="" class="navigation__item">Customers</a>
             <a href="" class="navigation__item">Pricing</a>
             <a href="" class="navigation__item">Docs</a>
         </nav>
-        <button class="button-sign-in"><span class="button-sign-in__text">Sign In</span></button>
+        <button class=" button button-sign-in"><span class="button-sign-in__text">Sign In</span></button>
     </header>
     <div class="about-product">
         <span class="about-product__header article-header">Balance agility with stability!</span>
@@ -28,7 +39,7 @@
         <div class="start-product flex_row">
             <button class="button start-product__button">get started</button>
             <div class="feedback">
-                <a href="#" class="feedback__link">Questions? Talk to our team →</a>
+                <a href="#" class="feedback__link link">Questions? Talk to our team →</a>
             </div>
         </div>
     </div>
@@ -76,7 +87,6 @@
     </div>
 </div>
 <div class="customers">
-    <div class="container">
         <header class="customers__header">Proof makes increasing conversions simple</header>
         <p class="customers__paragraph">Getting a conversion boost didn’t used to be this
             easy.
@@ -168,28 +178,27 @@
                     </p>
                 </div>
         </div>
-    </div>
 </div>
     <div class="help-drivers">
-        <div class="safety">
-            <header class="safety__header">Your safety is always a&nbsp;top priority</header>
-            <p class="safety__description">We’re committed to helping drivers and riders get&nbsp;where they
+        <div class="help-drivers__safety">
+            <header class="help-drivers__safety-header">Your safety is always a&nbsp;top priority</header>
+            <p class="help-drivers__safety-description">We’re committed to helping drivers and riders get&nbsp;where they
                 want to go
                 with confidence.</p>
-            <div class="drive-ride flex_row space_between">
-                <div class="drive">
-                    <header class="drive__header">Drive</header>
-                    <p class="drive__text">Drive when you want. Find opportunities around you.</p>
+            <div class="safety-content">
+                <div class="safety-content__item">
+                    <header class="safety-content__item-header">Drive</header>
+                    <p class="safety-content__item-text">Drive when you want. Find opportunities around you.</p>
                 </div>
-                <div class="ride">
-                    <header class="ride__header">Ride</header>
-                    <p class="ride__text">Tap your phone. Get where you're headed.</p>
+                <div class="safety-content__item">
+                    <header class="safety-content__item-header">Ride</header>
+                    <p class="safety-content__item-text">Tap your phone. Get where you're headed.</p>
                 </div>
             </div>
             <div class="start-product flex_row">
                 <button class="button start-product__button">get started</button>
                 <div class="feedback">
-                    <a href="#" class="feedback__link">Questions? Talk to our team →</a>
+                    <a href="#" class="feedback__link link">Questions? Talk to our team →</a>
                 </div>
             </div>
         </div>
@@ -197,26 +206,26 @@
     </div>
     <div class="help-drivers">
         <img src="img/move.png" alt="safety image" class="help-drivers__image">
-        <div class="safety">
-            <header class="safety__header">Move the way you want
+        <div class="help-drivers__safety">
+            <header class="help-drivers__safety-header">Move the way you want
                 Doors are always opening
             </header>
-            <p class="safety__description">Opportunity is everywhere. Get out there and find it with
+            <p class="help-drivers__safety-description">Opportunity is everywhere. Get out there and find it with
                 Uber.</p>
-            <div class="drive-ride flex_row space_between">
-                <div class="drive">
-                    <header class="drive__header">Drive</header>
-                    <p class="drive__text">Drive when you want. Find opportunities around you.</p>
+            <div class="safety-content">
+                <div class="safety-content__item">
+                    <header class="safety-content__item-header">Drive</header>
+                    <p class="safety-content__item-text">Drive when you want. Find opportunities around you.</p>
                 </div>
-                <div class="ride">
-                    <header class="ride__header">Ride</header>
-                    <p class="ride__text">Tap your phone. Get where you're headed.</p>
+                <div class="safety-content__item">
+                    <header class="safety-content__item-header">Ride</header>
+                    <p class="safety-content__item-text">Tap your phone. Get where you're headed.</p>
                 </div>
             </div>
             <div class="start-product flex_row">
                 <button class="button start-product__button">get started</button>
                 <div class="feedback">
-                    <a href="#" class="feedback__link">Questions? Talk to our team →</a>
+                    <a href="#" class="feedback__link link">Questions? Talk to our team →</a>
                 </div>
             </div>
         </div>
@@ -256,6 +265,7 @@
             </div>
     </div>
 </div>
+</div>
 <div class="demo-request">
             <div class="demo-request__text">
                 <img src="img/small-figure.png" alt="small figures" class="get-started__image">
@@ -275,7 +285,7 @@
             <img src="img/footer_logo.png" alt="footer logo" class="contacts__logo">
             <span class="contacts__phone">EU: +49 30 555 7322 77</span>
             <span class="contacts__phone">US: +1-415-800-4497</span>
-            <a class="contacts__link">info@gohub.ee</a>
+            <a class="contacts__link link">info@gohub.ee</a>
             <div class="social-network">
                 <ul class="social-network-list">
                     <li class="social-network-list__item">
@@ -324,9 +334,9 @@
             © 2018 Uber Technologies Inc.
         </div>
         <div class="footer-links">
-            <a class="footer-links__item">Privacy</a>
-            <a class="footer-links__item">Accessibility</a>
-            <a class="footer-links__item">Terms</a>
+            <a class="footer-links__item link">Privacy</a>
+            <a class="footer-links__item link">Accessibility</a>
+            <a class="footer-links__item link">Terms</a>
         </div>
     </div>
 </footer>
