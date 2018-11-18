@@ -1,10 +1,14 @@
 @import "vars";
 @import "fonts";
+@import "media";
+
 html {
   font-size: 100%;
+  @media screen and (max-width: 765px) {
+    font-size: 50%;
+  }
 }
 body {
-  //max-width: 1920px;
   width: 100%;
   background: url("../img/bg1.png") no-repeat 0 0;
   background-size: contain;
@@ -86,6 +90,7 @@ body {
 .container {
   //width: 1235px;
   width: 64.3%;
+  max-width: 1235px;
   margin: 0 auto;
 }
 
@@ -111,17 +116,8 @@ body {
 }
 
 .text_paragraph {
-  font: 23px 'Brown Light';
+  font: 1.4375rem 'Brown Light';
   color: map_get($colors, text-color);
-}
-
-.space_between {
-  justify-content: space-between;
-}
-
-.flex_row {
-  display: flex;
-  align-items: center;
 }
 
 .text_center {
@@ -129,7 +125,7 @@ body {
 }
 
 .medium_header {
-  font: 30px 'Brown Light';
+  font: 1.875rem 'Brown Light';
 }
 
 .head_text {
@@ -163,7 +159,7 @@ body {
   &__item {
     text-underline: none;
     text-decoration: none;
-    font-size: 19px;
+    font-size: 1.1875rem;
     color: map_get($colors, head-color);
     font-family: 'Brown Bold', sans-serif;
     margin-right: 50px;
@@ -180,7 +176,7 @@ body {
   &__text {
     color: #fff;
     display: block;
-    font-size: 19px;
+    font-size: 1.1875rem;
     padding: 5px 10px;
     line-height: 0;
   }
@@ -191,7 +187,7 @@ body {
   margin-top: 21%;
   margin-bottom: 11.3%;
   &__header {
-    font: 48px 'Brown Bold';
+    font: 3rem 'Brown Bold';
     color: map_get($colors, head-color);
   }
   &__text {
@@ -213,7 +209,7 @@ body {
 
 .feedback {
   &__link {
-    font: 19px 'Brown Regular';
+    font: 1.1875rem 'Brown Regular';
     color: map_get($colors, head-color);
   }
 }
@@ -235,7 +231,7 @@ body {
   }
   &__header {
     @extend .head_text;
-    font-size: 48px;
+    font-size: 3rem;
     padding: 146px 35px 0 0;
   }
   &__paragraph {
@@ -276,7 +272,7 @@ body {
     color: map_get($colors, head-card-color);
   }
   &__paragraph {
-    font: 18px 'Brown Light';
+    font: 1.125rem 'Brown Light';
     color: map_get($colors, text-color);
   }
 }
@@ -298,14 +294,14 @@ body {
   &-header {
     @extend .text_center;
     font-family: 'Brown Regular', sans-serif;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: map_get($colors, head-card-color);
     margin-bottom: 18px;
   }
   &-text {
     @extend .text_center;
     font-family: 'Brown Light', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 
@@ -386,7 +382,7 @@ body {
       @extend .medium_header;
     }
     &-text {
-      font: 16px 'Brown Light';
+      font: 1rem 'Brown Light';
       color: map_get($colors, text-color);
     }
   }
@@ -406,7 +402,7 @@ body {
     flex-basis: 100%;
   }
   &__header {
-    font: 30px 'Brown Regular';
+    font: 1.875rem 'Brown Regular';
     color: map_get($colors, head-color);
     margin-bottom: 60px;
   }
@@ -415,7 +411,7 @@ body {
     margin-bottom: 105px;
     padding: 0;
     &__item {
-      font: 20px 'Brown Light';
+      font: 1.25rem 'Brown Light';
       margin-bottom: 42px;
       &:last-child {
         margin-bottom: 0;
@@ -454,7 +450,7 @@ body {
     outline: none;
     -webkit-appearance: none;
     vertical-align: middle;
-    font: 23px 'Brown Light';
+    font: 1.4375rem 'Brown Light';
     color: map_get($colors, text-color);
     padding-left: 39px;
   }
@@ -482,12 +478,12 @@ body {
       }
       &-phone {
         display: block;
-        font: 16px 'Brown Light';
+        font: 1rem 'Brown Light';
       }
       &-link {
         margin: 46px 0;
         display: block;
-        font: 16px 'Brown Regular';
+        font: 1rem 'Brown Regular';
       }
     }
   }
@@ -509,7 +505,7 @@ body {
 }
 
 .links {
-  font: 16px 'Brown Light';
+  font: 1rem 'Brown Light';
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -528,14 +524,14 @@ body {
 }
 
 .start-button-text {
-  font: 15px 'Brown Bold';
+  font: 0.9375rem 'Brown Bold';
   color: #845cff;
   text-transform: uppercase;
   margin-right: 10px;
 }
 
 .copyright, .footer-links {
-  font: 16px 'Brown Light';
+  font: 1rem 'Brown Light';
   color: #555377;
 }
 
