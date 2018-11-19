@@ -1,5 +1,59 @@
-@media screen and (max-width: 765px) {
-  .container {
-    width: 100%;
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+@media only screen and (max-width: 767px) {
+  html {
+    font-size: 50%;
   }
+  .container {
+    width: 90%;
+  }
+  .navigation {
+    display: none;
+  }
+  .button-sign-in {
+    height: 36px;
+    width: 88px;
+  }
+  .about-product {
+    width: 60%;
+    margin: 10% auto 5%;
+  }
+  .improve {
+    text-align: center;
+    margin: 0 auto;
+    flex-basis: 100%;
+  }
+  .feature-card-wrapper {
+    flex-basis: 100%;
+  }
+  .feature-card {
+    text-align: center;
+    &__image {
+      margin: 0 auto;
+    }
+  }
+  .customers__list-card {
+    flex-basis: 50%;
+  }
+  .advantages {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 320px) {
+
 }
