@@ -1,14 +1,124 @@
-@media (min-width: 1200px) {
-
+@media (min-width: 1200px) and (max-width: 1800px) {
+  html {
+    font-size: 95%;
+  }
+.container {
+  width: 75%;
+}
+  .about-product {
+    width: 50%;
+  }
+  .improve {
+    &__header {
+      padding: 0;
+    }
+  }
+  .safety-content {
+    margin-bottom: 20px;
+  }
+  .help-drivers {
+    &__safety {
+      flex-basis: 70%;
+    }
+    &__image {
+      width: 50%;
+    }
+  }
+  .get-started-form__button {
+    margin-right: 0;
+  }
+  .get-started__header {
+    font-size: 2.3rem;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-
+ html {
+   font-size: 80%;
+ }
+  .container {
+    width: 78%;
+  }
+  .about-product {
+    width: 51%;
+  }
+  .improve {
+    &__header {
+      padding: 0;
+    }
+  }
+  .safety-content {
+    margin-bottom: 15px;
+  }
+  .help-drivers {
+    &__safety {
+      flex-basis: 70%;
+    }
+    &__image {
+      width: 45%;
+    }
+  }
+  .get-started-form__button {
+    margin-right: 0;
+  }
+  .get-started__header {
+    font-size: 2.3rem;
+  }
+  .customers {
+    margin-top: 100px;
+    padding: 0 11%;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-
+  html {
+    font-size: 80%;
+  }
+  .container {
+    width: 83%;
+  }
+  .about-product {
+    width: 65%;
+  }
+  .improve {
+    &__header {
+      padding: 0;
+    }
+  }
+  .safety-content {
+    margin-bottom: 15px;
+  }
+  .help-drivers {
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    &__safety {
+      flex-basis: 100%;
+    }
+    &__image {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+  .safety-content {
+    &__item {
+      flex-basis: 100%;
+    }
+  }
+  .get-started-form__button {
+    margin-right: 0;
+  }
+  .get-started__header {
+    font-size: 2.3rem;
+  }
+  .customers {
+    margin-top: 100px;
+    padding: 0 11%;
+    &__list {
+      padding-bottom: 7%;
+    }
+  }
 }
+
 
 @media only screen and (max-width: 767px) {
   html {
@@ -25,7 +135,7 @@
     width: 88px;
   }
   .about-product {
-    width: 60%;
+    width: 70%;
     margin: 10% auto 5%;
   }
   .improve {
@@ -47,6 +157,17 @@
   }
   .advantages {
     flex-basis: 100%;
+  }
+  .help-drivers {
+    flex-wrap: wrap;
+    &__safety {
+      flex-basis: 100%;
+    }
+  }
+  .safety-content {
+    &__item {
+      flex-basis: 100%;
+    }
   }
 }
 
