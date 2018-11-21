@@ -124,8 +124,232 @@
   html {
     font-size: 50%;
   }
+  body {
+    background: none;
+  };
   .container {
     width: 90%;
+  }
+  .navigation {
+    display: none;
+  }
+  .button-sign-in {
+    height: 36px;
+    width: 88px;
+  }
+  .about-product {
+    width: 70%;
+    margin: 10% auto 5%;
+  }
+  .improve {
+    text-align: center;
+    margin: 0 auto;
+    flex-basis: 100%;
+    height: auto;
+    &__header {
+      padding: 0;
+    }
+  }
+  .card_indent {
+    padding: 5% 4% 9%;
+  }
+  .feature-card-wrapper {
+    flex-basis: 100%;
+    height: auto;
+  }
+  .feature-card {
+    text-align: center;
+    &__image {
+      margin: 0 auto;
+    }
+    &__header {
+      font-size: 4rem;
+    }
+    &__paragraph {
+      font-size: 2rem;
+    }
+  }
+  .customers {
+    padding: 0 8%;
+    margin-top: 32px;
+  }
+  .customers__list-card {
+    flex-basis: 50%;
+  }
+  .customers__list {
+    padding-bottom: 15%;
+  }
+  .advantages {
+    flex-basis: 100%;
+  }
+  .help-drivers {
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+    &__safety {
+      flex-basis: 100%;
+    }
+  }
+  .safety-content {
+    &__item {
+      flex-basis: 100%;
+    }
+  }
+  .get-started-form__input {
+    height: 60px;
+  }
+  .footer {
+    &__content {
+      padding: 30px 0;
+      flex-direction: column;
+      align-items: center;
+      &-contacts {
+        &-logo {
+          margin-bottom: 24px;
+          width: 65%;
+        }
+        &-phone {
+          font-size: 1.4rem;
+        }
+        &-link {
+          margin: 16px 0;
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+  .links {
+    font-size: 1.4rem;
+  }
+  .demo-request {
+    flex-wrap: wrap;
+    padding: 30px 10%;
+    text-align: center;
+    justify-content: center;
+    &__text {
+      margin-bottom: 16px;
+    }
+  }
+  .advantages-list__item {
+    font-size: 1.7rem;
+  }
+}
+
+//@media (max-width: 480px) and (min-width: 320px) {
+//  html {
+//    font-size: 50%;
+//  }
+//  body {
+//    background: none;
+//  };
+//  .container {
+//    width: 90%;
+//  }
+//  .navigation {
+//    display: none;
+//  }
+//  .button-sign-in {
+//    height: 36px;
+//    width: 88px;
+//  }
+//  .about-product {
+//    width: 70%;
+//    margin: 10% auto 5%;
+//  }
+//  .improve {
+//    text-align: center;
+//    margin: 0 auto;
+//    flex-basis: 100%;
+//  }
+//  .feature-card-wrapper {
+//    flex-basis: 100%;
+//  }
+//  .feature-card {
+//    text-align: center;
+//    &__image {
+//      margin: 0 auto;
+//    }
+//  }
+//  .customers__list-card {
+//    flex-basis: 50%;
+//  }
+//  .advantages {
+//    flex-basis: 100%;
+//  }
+//  .help-drivers {
+//    flex-wrap: wrap;
+//    margin-bottom: 0;
+//    &__safety {
+//      flex-basis: 100%;
+//    }
+//  }
+//  .safety-content {
+//    &__item {
+//      flex-basis: 100%;
+//    }
+//  }
+//  .start-product__button {
+//    margin-right: 8px;
+//  }
+//  .demo-request {
+//    flex-wrap: wrap;
+//    padding: 30px 10%;
+//    text-align: center;
+//    justify-content: center;
+//    &__text {
+//      margin-bottom: 10px;
+//    }
+//  }
+//  .get-started__header {
+//    margin: 15px 0;
+//  }
+//  .get-started-form__input {
+//    height: 60px;
+//  }
+//  .footer {
+//    &__content {
+//      padding: 50px 0;
+//      padding: 30px 0;
+//      flex-direction: column;
+//      align-items: center;
+//      &-contacts {
+//        &-logo {
+//          margin-bottom: 24px;
+//          width: 65%;
+//        }
+//        &-phone {
+//          font-size: 1.4rem;
+//        }
+//        &-link {
+//          margin: 16px 0;
+//          font-size: 1.4rem;
+//        }
+//      }
+//    }
+//  }
+//  .links {
+//    font-size: 1.4rem;
+//  }
+//  .footer__bottom {
+//    padding: 0 0 32px;
+//  }
+//  .copyright, .footer-links {
+//    font: 1.4rem 'Brown Light';
+//    color: #945592;
+//  }
+//  .finances {
+//    background: none;
+//  }
+//}
+
+@media (max-width: 480px) and (min-width: 320px) {
+  html {
+    font-size: 55%;
+  }
+  body {
+    background: none;
+  };
+  .container {
+    width: 100%;
   }
   .navigation {
     display: none;
@@ -145,12 +369,17 @@
   }
   .feature-card-wrapper {
     flex-basis: 100%;
+    height: auto;
+    margin-bottom: 32px;
   }
   .feature-card {
     text-align: center;
     &__image {
       margin: 0 auto;
     }
+  }
+  .customers {
+    padding: 0;
   }
   .customers__list-card {
     flex-basis: 50%;
@@ -160,6 +389,7 @@
   }
   .help-drivers {
     flex-wrap: wrap;
+    margin-bottom: 0;
     &__safety {
       flex-basis: 100%;
     }
@@ -169,12 +399,61 @@
       flex-basis: 100%;
     }
   }
-}
-
-@media (max-width: 480px) {
-
-}
-
-@media (max-width: 320px) {
+  .start-product__button {
+    margin-right: 8px;
+  }
+  .demo-request {
+    flex-wrap: wrap;
+    padding: 30px 10%;
+    text-align: center;
+    justify-content: center;
+    &__text {
+      margin-bottom: 10px;
+    }
+  }
+  .get-started__header {
+    margin: 15px 0;
+  }
+  .get-started-form__input {
+    height: 60px;
+  }
+  .footer {
+    &__content {
+      padding: 30px 0;
+      flex-direction: column;
+      align-items: center;
+      &-contacts {
+        &-logo {
+          margin-bottom: 24px;
+          width: 65%;
+        }
+        &-phone {
+          font-size: 1.4rem;
+        }
+        &-link {
+          margin: 16px 0;
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+  .links {
+    font-size: 1.4rem;
+  }
+  .footer__bottom {
+    padding: 0 0 32px;
+  }
+  .copyright, .footer-links {
+    font: 1.4rem 'Brown Light';
+    color: #945592;
+  }
+  .finances {
+    background: none;
+    padding: 0 5%;
+    &__description {
+      width: auto;
+      margin-bottom: 56px;
+    }
+  }
 
 }
