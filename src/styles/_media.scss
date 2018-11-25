@@ -348,6 +348,13 @@
   body {
     background: none;
   };
+  .header {
+    &-logo {
+      &__image {
+        width: 60%;
+      }
+    }
+  }
   .container {
     width: 100%;
   }
@@ -442,6 +449,7 @@
   }
   .footer__bottom {
     padding: 0 0 32px;
+    justify-content: space-around;
   }
   .copyright, .footer-links {
     font: 1.4rem 'Brown Light';
@@ -455,5 +463,9 @@
       margin-bottom: 56px;
     }
   }
-
+.footer-links {
+  &__item {
+    margin-left: 10px;
+  }
+}
 }

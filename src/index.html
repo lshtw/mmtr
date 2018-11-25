@@ -8,20 +8,21 @@
 <body>
 <div class="container">
     <header class="header">
-        <div class="header-logo">
+        <figure class="header-logo">
             <img src="img/logo.png" class="header-logo__image" alt="Logo">
-        </div>
-        <!--<input type="checkbox" id="hmt" class="hidden-menu-ticker">-->
-        <!--<label class="btn-menu" for="hmt">-->
-            <!--<span class="first"></span>-->
-            <!--<span class="second"></span>-->
-            <!--<span class="third"></span>-->
-        <!--</label>-->
-        <!--<ul class="hidden-menu">-->
-            <!--<li><a href="">Link 1</a></li>-->
-            <!--<li><a href="">Link 2</a></li>-->
-            <!--<li><a href="">Link 3</a></li>-->
-        <!--</ul>-->
+        </figure>
+        <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+        <label class="btn-menu" for="hmt">
+            <span class="first"></span>
+            <span class="second"></span>
+            <span class="third"></span>
+        </label>
+        <ul class="hidden-menu">
+            <li><a href="" class="hidden-menu__item link">Product</a></li>
+            <li><a href="" class="hidden-menu__item link">Customers</a></li>
+            <li><a href="" class="hidden-menu__item link">Pricing</a></li>
+            <li><a href="" class="hidden-menu__item link">Docs</a></li>
+        </ul>
         <nav class="navigation">
             <a href="" class="navigation__item link">Product</a>
             <a href="" class="navigation__item link">Customers</a>
@@ -30,7 +31,7 @@
         </nav>
         <button class="button button-sign-in"><span class="button-sign-in__text">Sign In</span></button>
     </header>
-    <div class="about-product">
+    <section class="about-product">
         <span class="about-product__header article-header">Balance agility with stability!</span>
         <p class="about-product__text">
             Gohub monitors application stability, so you can make data-driven
@@ -42,8 +43,8 @@
                 <a href="#" class="feedback__link link">Questions? Talk to our team&nbsp;→</a>
             </div>
         </div>
-    </div>
-    <div class="features">
+    </section>
+    <section class="features">
         <div class="improve">
             <h2 class="improve__header">Improve the stability of your application</h2>
             <p class="improve__paragraph">
@@ -84,9 +85,9 @@
                 </p>
             </div>
         </div>
-    </div>
+    </section>
 </div>
-<div class="customers">
+<section class="customers">
         <header class="customers__header">Proof makes increasing conversions simple</header>
         <p class="customers__paragraph">Getting a conversion boost didn’t used to be this
             easy.
@@ -94,70 +95,90 @@
         </p>
         <div class="customers__list">
                 <div class="customers__list-card">
-                    <img src="img/customer-cards/card1.png" alt="card image" class="customers__list-card-image">
+                    <figure>
+                        <img src="img/customer-cards/card1.png" alt="card image" class="customers__list-card-image">
+                    </figure>
                     <h2 class="customers__list-card-header">Higher Conversions</h2>
                     <p class="customers__list-card-text">Convert more website visitors into signups and
                         purchases.
                     </p>
                 </div>
                 <div class="customers__list-card">
-                    <img src="img/customer-cards/card2.png" alt="card image" class="customers__list-card-image">
+                    <figure>
+                        <img src="img/customer-cards/card2.png" alt="card image" class="customers__list-card-image">
+                    </figure>
                     <h2 class="customers__list-card-header">Save on Acquisition</h2>
                     <p class="customers__list-card-text">Your advertising spend will go further than ever
                         before.
                     </p>
                 </div>
                 <div class="customers__list-card">
-                    <img src="img/customer-cards/card3.png" alt="card image" class="customers__list-card-image">
+                    <figure>
+                        <img src="img/customer-cards/card3.png" alt="card image" class="customers__list-card-image">
+                    </figure>
                     <h2 class="customers__list-card-header">Increase Visitor Trust</h2>
                     <p class="customers__list-card-text">People trust companies they see other people buy
                         from as well.
                     </p>
                 </div>
                 <div class="customers__list-card">
-                    <img src="img/customer-cards/card4.png" alt="card image" class="customers__list-card-image">
+                    <figure>
+                        <img src="img/customer-cards/card4.png" alt="card image" class="customers__list-card-image">
+                    </figure>
                     <h2 class="customers__list-card-header">Social Influence</h2>
                     <p class="customers__list-card-text">Seeing other visitors taking action creates fear of
                         missing out.
                     </p>
                 </div>
                 <div class="customers__list-card">
-                    <img src="img/customer-cards/card5.png" alt="card image" class="customers__list-card-image">
+                    <figure>
+                        <img src="img/customer-cards/card5.png" alt="card image" class="customers__list-card-image">
+                    </figure>
                     <h2 class="customers__list-card-header">Activity Notifications</h2>
                     <p class="customers__list-card-text">Display recent sales and opt-ins on your pages and
                         drive visitors to
                     </p>
                 </div>
                 <div class="customers__list-card">
-                    <img src="img/customer-cards/card6.png" alt="card image" class="customers__list-card-image">
+                    <figure>
+                        <img src="img/customer-cards/card6.png" alt="card image" class="customers__list-card-image">
+                    </figure>
                     <h2 class="customers__list-card-header">Customer Journeys</h2>
                     <p class="customers__list-card-text">Your advertising spend will go further than ever
                         before.
                     </p>
                 </div>
                 <div class="customers__list-card">
-                    <img src="img/customer-cards/card7.png" alt="card image" class="customers__list-card-image">
+                    <figure>
+                        <img src="img/customer-cards/card7.png" alt="card image" class="customers__list-card-image">
+                    </figure>
                     <h2 class="customers__list-card-header">Custom Timing</h2>
                     <p class="customers__list-card-text">Control when, how long and how fast notifications
                         display on your
                     </p>
                 </div>
                 <div class="customers__list-card">
-                    <img src="img/customer-cards/card8.png" alt="card image" class="customers__list-card-image">
+                    <figure>
+                        <img src="img/customer-cards/card8.png" alt="card image" class="customers__list-card-image">
+                    </figure>
                     <h2 class="customers__list-card-header">Live Visitor Count</h2>
                     <p class="customers__list-card-text">Show how many visitors are browsing your site - "28
                         people are
                     </p>
                 </div>
                 <div class="customers__list-card">
-                    <img src="img/customer-cards/card9.png" alt="card image" class="customers__list-card-image">
+                    <figure>
+                        <img src="img/customer-cards/card9.png" alt="card image" class="customers__list-card-image">
+                    </figure>
                     <h2 class="customers__list-card-header">Visitor Identification</h2>
                     <p class="customers__list-card-text">We'll show you detailed profiles of every visitor
                         who enters their
                     </p>
                 </div>
                 <div class="customers__list-card">
-                    <img src="img/customer-cards/card10.png" alt="card image" class="customers__list-card-image">
+                    <figure>
+                        <img src="img/customer-cards/card10.png" alt="card image" class="customers__list-card-image">
+                    </figure>
                     <h2 class="customers__list-card-header">Custom Rules</h2>
                     <p class="customers__list-card-text">Granular control over how and when notifications
                         display on your
@@ -171,14 +192,16 @@
                     </p>
                 </div>
                 <div class="customers__list-card">
-                    <img src="img/customer-cards/card12.png" alt="card image" class="customers__list-card-image">
+                    <figure>
+                        <img src="img/customer-cards/card12.png" alt="card image" class="customers__list-card-image">
+                    </figure>
                     <h2 class="customers__list-card-header">Language Translation</h2>
                     <p class="customers__list-card-text">Translate Recent Activity notification into any
                         language you want.
                     </p>
                 </div>
         </div>
-</div>
+</section>
     <div class="help-drivers container">
         <div class="help-drivers__safety">
             <header class="help-drivers__safety-header">Your safety is always a&nbsp;top priority</header>
@@ -202,10 +225,14 @@
                 </div>
             </div>
         </div>
-        <img src="img/safety.png" alt="safety image" class="help-drivers__image">
+        <figure>
+            <img src="img/safety.png" alt="safety image" class="help-drivers__image">
+        </figure>
     </div>
     <div class="help-drivers container">
-        <img src="img/move.png" alt="safety image" class="help-drivers__image">
+        <figure>
+            <img src="img/move.png" alt="safety image" class="help-drivers__image">
+        </figure>
         <div class="help-drivers__safety">
             <header class="help-drivers__safety-header">Move the way you want
                 Doors are always opening
@@ -230,7 +257,7 @@
             </div>
         </div>
     </div>
-<div class="finances">
+<section class="finances">
         <header class="finances__header">Your finances on auto-pilot</header>
         <p class="finances__description">With Qonto, admin hassle are over! Unlimited history,
             auto-categorised
@@ -263,8 +290,8 @@
                 </ul>
             </div>
     </div>
-</div>
-<div class="demo-request">
+</section>
+<section class="demo-request">
             <div class="demo-request__text">
                 <img src="img/small-figure.png" alt="small figures" class="get-started__image">
                 <p class="get-started__header">Ready to get started?</p>
@@ -276,9 +303,9 @@
                         class="start-button-text">get started</span><img src="img/enter.svg" alt="button image">
                 </button>
             </form>
-</div>
+</section>
 <footer class="footer">
-    <div class="footer__content container">
+    <section class="footer__content container">
         <div class="footer__content-contacts">
             <img src="img/footer_logo.png" alt="footer logo" class="footer__content-contacts-logo">
             <span class="footer__content-contacts-phone">EU: +49 30 555 7322 77</span>
@@ -326,7 +353,7 @@
                 <li class="links-list__item"><a href="" class="link">Connect</a></li>
             </ul>
         </div>
-    </div>
+    </section>
     <div class="footer__bottom container">
         <div class="copyright">
             © 2018 Uber Technologies Inc.
