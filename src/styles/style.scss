@@ -238,7 +238,7 @@ body {
   &__header {
     @extend .head_text;
     font-size: 3rem;
-    padding: 110px 35px 32px 0;
+    padding: 122px 35px 32px 0;
   }
   &__paragraph {
     @extend .text_paragraph;
@@ -261,7 +261,7 @@ body {
 .feature-card {
   &__image {
     display: block;
-    margin-bottom: 38px;
+    margin-bottom: 44px;
   }
   &__header {
     @extend .medium_header;
@@ -309,13 +309,15 @@ body {
   &__header {
     @extend .text_center;
     @extend .head_text;
-    margin-bottom: 30px;
+    margin-bottom: 29px;
+    line-height: 1.5;
+    letter-spacing: 0.9px;
   }
   &__paragraph {
     @extend .text_paragraph;
     @extend .text_center;
     padding: 0 13%;
-    margin-bottom: 145px
+    margin-bottom: 143px
   }
 }
 
@@ -363,7 +365,7 @@ body {
   //padding: 0 17.839%;
   margin-bottom: 200px;
   &__safety {
-    flex-basis: 45%;
+    flex-basis: 44%;
     &-header {
       @extend .head_text;
       margin-top: 8px;
