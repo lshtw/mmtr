@@ -287,9 +287,7 @@ body {
 }
 
 .customers {
-  background: url('../img/bg2.png') no-repeat 0 70%;
   margin-top: 116px;
-  padding: 0 17.839%;
   &__header {
     @extend .text_center;
     @extend .head_text;
@@ -314,10 +312,8 @@ body {
 }
 
 .finances {
-  background: url('../img/finances.png') no-repeat top right;
   display: flex;
   flex-direction: column;
-  padding: 0 17.839%;
   &__header {
     padding-top: 68px;
     @extend .head_text;
@@ -331,8 +327,7 @@ body {
 }
 
 .demo-request {
-  background-color: #fafaff;
-  padding: 120px 17.839%;
+  padding: 120px 0;
   display: flex;
   margin-top: 108px;
   justify-content: space-between;
@@ -456,7 +451,6 @@ body {
 }
 
 .footer {
-  background-color: map_get($colors, head-card-color);
   &__content {
     color: #ffffff;
     align-items: flex-start;
@@ -532,6 +526,18 @@ body {
   &__item {
     margin-left: 33px;
   }
+}
+.customers-bg {
+  background: url('../img/bg2.png') no-repeat 0 70%;
+}
+.finances-bg {
+  background: url('../img/finances.png') no-repeat top right;
+}
+.demo-request-bg {
+  background-color: #fafaff;
+}
+.footer-bg {
+  background-color: map_get($colors, head-card-color);
 }
 
 @import 'media';
