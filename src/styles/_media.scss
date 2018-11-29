@@ -18,10 +18,10 @@
   }
   .help-drivers {
     &__safety {
-      flex-basis: 70%;
+      flex-basis: 60%;
     }
     &__image {
-      width: 50%;
+      width: 100%;
     }
   }
   .get-started-form__button {
@@ -55,7 +55,7 @@
       flex-basis: 70%;
     }
     &__image {
-      width: 45%;
+      width: 100%;
     }
   }
   .get-started-form__button {
@@ -67,6 +67,12 @@
   .customers {
     margin-top: 100px;
     padding: 0 11%;
+    &__list {
+      padding-bottom: 7%;
+      &-card {
+        flex-basis: 27%;
+      }
+    }
   }
 }
 
@@ -88,21 +94,45 @@
   .safety-content {
     margin-bottom: 15px;
   }
+  .figure {
+    margin: 0 auto;
+  }
+  .feature-card {
+    &__header {
+      font-size: 2.2rem;
+    }
+    &__paragraph {
+      font-size: 1.4rem;
+    }
+  }
+  .card_indent {
+    padding: 10.36% 4% 17.15%;
+  }
   .help-drivers {
     flex-wrap: wrap;
     margin-bottom: 40px;
+    text-align: center;
     &__safety {
       flex-basis: 100%;
+      &-description {
+        font-size: 1.55rem;
+      }
     }
     &__image {
-      width: 80%;
-      margin: 0 auto;
+      width: 100%;
+      margin-top: 30px;
     }
   }
   .safety-content {
     &__item {
       flex-basis: 100%;
+      &-text {
+        font-size: 1.4rem;
+      }
     }
+  }
+  .start-product {
+    justify-content: flex-start;
   }
   .get-started-form__button {
     margin-right: 0;
@@ -112,11 +142,16 @@
   }
   .customers {
     margin-top: 100px;
-    padding: 0 11%;
     &__list {
       padding-bottom: 7%;
       &-card {
-        flex-basis: 26%;
+        flex-basis: 30%;
+        &-header {
+          font-size: 1.5rem;
+        }
+        &-text {
+          font-size: 1.3rem;
+        }
       }
     }
   }
@@ -125,7 +160,7 @@
 
 @media only screen and (max-width: 767px) {
   html {
-    font-size: 50%;
+    font-size: 65%;
   }
   body {
     background: none;
@@ -178,6 +213,12 @@
   }
   .customers__list-card {
     flex-basis: 50%;
+    &-haeder {
+      font-size: 2.5rem;
+    }
+    &-text {
+      font-size: 1.8rem;
+    }
   }
   .customers__list {
     padding-bottom: 15%;
@@ -196,6 +237,52 @@
     &__item {
       flex-basis: 100%;
     }
+  }
+  .help-drivers {
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    text-align: center;
+    &__safety {
+      flex-basis: 100%;
+      &-description {
+        font-size: 1.55rem;
+      }
+    }
+    &__image {
+      width: 100%;
+      margin-top: 30px;
+    }
+  }
+  .safety-content {
+    &__item {
+      flex-basis: 100%;
+      &-text {
+        font-size: 1.4rem;
+      }
+    }
+  }
+  .start-product {
+    justify-content: center;
+  }
+  .figure {
+    margin: 0 auto;
+  }
+  .finances {
+    &__header {
+      padding-top: 40px;
+      text-align: center;
+      font-size: 4rem;
+    }
+    &__description {
+      width: auto;
+      margin-bottom: 60px;
+      margin-top: 22px;
+      text-align: center;
+      font-size: 2rem;
+    }
+  }
+  .advantages-wrapper {
+    padding-left: 10%;
   }
   .get-started-form__input {
     height: 60px;
