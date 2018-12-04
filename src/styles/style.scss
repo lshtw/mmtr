@@ -25,7 +25,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   width: 200px;
-  background-color: #fafaff;
+  background-color: map_get($colors, hidden-menu-bg);
   height: 100%;
   top: 0;
   right: -200px;
@@ -93,7 +93,7 @@ body {
 }
 
 .button {
-  background-color: #845cff;
+  background-color: map_get($colors, button-bg);
   border: 0;
   border-radius: 3px;
   color: #fff;
@@ -101,7 +101,7 @@ body {
   cursor: pointer;
   outline: none;
   &:hover {
-    background-color: #18a9ff;
+    background-color: map_get($colors, button-hover);
   }
 }
 .link {
@@ -283,6 +283,7 @@ body {
     @extend .text_center;
     font-family: 'Brown Light', sans-serif;
     font-size: 1rem;
+    word-break: break-word;
   }
 }
 
@@ -533,7 +534,7 @@ body {
   background: url('../img/finances.png') no-repeat top right;
 }
 .demo-request-bg {
-  background-color: #fafaff;
+  background-color: map_get($colors, hidden-menu-bg);
 }
 .footer-bg {
   background-color: map_get($colors, head-card-color);

@@ -1,3 +1,5 @@
+@import "vars";
+
 @media (min-width: 1200px) and (max-width: 1400px) {
   html {
     font-size: 95%;
@@ -38,6 +40,9 @@
  }
   .container {
    max-width: 1020px;
+  }
+  .header {
+    align-items: center;
   }
   .about-product {
     width: 51%;
@@ -309,6 +314,7 @@
   }
   .links {
     font-size: 1.4rem;
+    width: 90%;
   }
   .demo-request {
     flex-wrap: wrap;
@@ -326,10 +332,23 @@
     display: block;
     right: 160px;
   }
+  .hidden-menu {
+    text-align: right;
+    &__item {
+      text-underline: none;
+      text-decoration: none;
+      font-size: 1.4rem;
+      color: map_get($colors, head-color);
+      font-family: 'Brown Bold', sans-serif;
+    }
+  }
 
   .hidden-menu-ticker:checked ~ .hidden-menu {
     display: flex;
     flex-direction: column;
+  }
+  .hidden-menu-ticker:checked ~ .btn-menu {
+ position: fixed;
   }
 }
 //@media (max-width: 480px) and (min-width: 320px) {
@@ -464,13 +483,25 @@
     width: 88px;
   }
   .about-product {
-    width: 70%;
+    width: 100%;
     margin: 10% auto 5%;
+    &__header {
+      display: block;
+      text-align: center;
+    }
+    &__text {
+      margin: 5% 0 32px 0;
+      text-align: center;
+      font-size: 1.7rem;
+    }
   }
   .improve {
     text-align: center;
     margin: 0 auto;
     flex-basis: 100%;
+    &__paragraph {
+      font-size: 1.7rem;
+    }
   }
   .feature-card-wrapper {
     flex-basis: 100%;
@@ -485,9 +516,15 @@
   }
   .customers {
     padding: 0;
+    &__paragraph {
+      font-size: 1.7rem;
+    }
   }
   .customers__list-card {
-    flex-basis: 50%;
+    flex-basis: 100%;
+    &-header {
+      font-size: 2rem;
+    }
   }
   .advantages {
     flex-basis: 100%;
@@ -569,5 +606,8 @@
   .btn-menu {
     display: block;
     right: 140px;
+  }
+  .finances-bg {
+    background: none;
   }
 }
