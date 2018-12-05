@@ -7,13 +7,9 @@
 }
 html {
   font-size: 100%;
-  width: 100%;
-  overflow-x: hidden;
 }
 body {
-  width: 100%;
   background: url('../img/bg1.png') no-repeat 0 0;
-  overflow-x: hidden;
   margin: 0;
 }
 
@@ -267,7 +263,6 @@ body {
   flex-basis: 21%;
   height: 210px;
   margin-bottom: 14.4%;
-  margin-right: -12px;
   &-image {
     display: block;
     margin: 0 auto 42px;
