@@ -263,22 +263,24 @@ body {
   flex-basis: 21%;
   height: 210px;
   margin-bottom: 14.4%;
-  &-image {
-    display: block;
-    margin: 0 auto 42px;
-  }
-  &-header {
-    @extend .text_center;
-    font-family: 'Brown Regular', sans-serif;
-    font-size: 1.25rem;
-    color: map_get($colors, head-card-color);
-    margin-bottom: 16px;
-  }
-  &-text {
-    @extend .text_center;
-    font-family: 'Brown Light', sans-serif;
-    font-size: 1rem;
-    word-break: break-word;
+  &-front {
+    &-image {
+      display: block;
+      margin: 0 auto 42px;
+    }
+    &-header {
+      @extend .text_center;
+      font-family: 'Brown Regular', sans-serif;
+      font-size: 1.25rem;
+      color: map_get($colors, head-card-color);
+      margin-bottom: 16px;
+    }
+    &-text {
+      @extend .text_center;
+      font-family: 'Brown Light', sans-serif;
+      font-size: 1rem;
+      word-break: break-word;
+    }
   }
 }
 
