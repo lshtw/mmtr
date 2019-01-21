@@ -8,7 +8,8 @@ var gulp = require('gulp'),
     cssmin = require('gulp-minify-css'),
     browserSync = require("browser-sync"),
     reload = browserSync.reload,
-    clean = require('gulp-clean');
+    clean = require('gulp-clean'),
+    concat = require('gulp-concat');
 
 var path = {
     build: {
@@ -20,14 +21,14 @@ var path = {
     },
     src: {
         html: 'src/*.html',
-        js: 'src/js/main.js',
+        js: 'src/scripts/*.js',
         style: 'src/styles/style.scss',
         img: 'src/img/**/*.*',
         fonts: 'src/fonts/**/*.*'
     },
     watch: {
         html: 'src/**/*.html',
-        js: 'src/js/**/*.js',
+        js: 'src/scripts/**/*.js',
         style: 'src/styles/**/*.scss',
         img: 'src/img/**/*.*',
         fonts: 'src/fonts/**/*.*'
@@ -51,8 +52,9 @@ gulp.task('html-build', function () {
 });
 
 gulp.task('js-build', function () {
-    gulp.src(path.src.js) //Найдем наш main файл
-        .pipe(uglify()) //Сожмем наш js
+   return gulp.src(path.src.js) //Найдем наш main файл
+        // .pipe(uglify()) //Сожмем наш js
+        .pipe(concat('all.js'))
         .pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
         .pipe(reload({stream: true})); //И перезагрузим сервер
 });

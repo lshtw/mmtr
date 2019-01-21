@@ -47,5 +47,8 @@
     "webpack": "v4.28.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "mediaelement": "^4.2.9"
   }
 }
