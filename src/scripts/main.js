@@ -1,4 +1,4 @@
-import { VideoEvent } from "./videos.js";
+import { VideoEvent } from './videos.js';
 
 window.onload = function () {
     let video = new VideoEvent();

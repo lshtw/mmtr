@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
     cssmin = require('gulp-minify-css'),
-    browserSync = require("browser-sync"),
+    browserSync = require('browser-sync'),
     reload = browserSync.reload,
     clean = require('gulp-clean'),
     concat = require('gulp-concat');
@@ -38,7 +38,7 @@ var path = {
 
 var config = {
     server: {
-        baseDir: "./build"
+        baseDir: './build'
     },
     tunnel: true,
     host: 'localhost',
