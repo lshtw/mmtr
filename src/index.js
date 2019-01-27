@@ -1,1 +1,2 @@
-let a = () => console.log('aaa');
+import './styles/style.scss';
+import './scripts/main';

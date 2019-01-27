@@ -23,14 +23,17 @@ module.exports = {
         },
             {
                 test: /\.scss$/,
-                exclude: /(node_modules|bower_components)/,
-                use: [{
-                    loader: 'css-loader'
-                },
+                use: [
                     {
-                        loader: 'sass-loader'
+                        loader: "style-loader" // creates style nodes from JS strings
+                    },
+                    {
+                        loader: "css-loader" // translates CSS into CommonJS
+                    },
+                    {
+                        loader: "sass-loader" // compiles Sass to CSS
                     }
-                ]
+                    ]
             },
             {
             test: /\.(png|svg|jpg|gif|ttf)$/,
@@ -41,7 +44,7 @@ module.exports = {
        ]
     },
      plugins: [
-         new CleanWebpackPlugin(["build"]),
+       //  new CleanWebpackPlugin(["build"]),
          new ExtractTextPlugin({
              filename: './style/style.css',
          }),
@@ -62,7 +65,6 @@ module.exports = {
          ]),
     ],
     devServer: {
-        contentBase: __dirname + '/build/',
-        hot: true
+        contentBase: __dirname + '/build/'
     }
 };
