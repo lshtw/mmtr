@@ -21,6 +21,7 @@
   "homepage": "https://github.com/lshtw/mmtr#readme",
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/preset-env": "^7.2.3",
     "autoprefixer": "^9.1.5",
     "babel-core": "^6.26.3",
@@ -41,8 +42,8 @@
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.1",
     "gulp-watch": "^5.0.1",
-    "html-webpack-plugin": "^4.0.0-beta.5",
     "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^4.0.0-beta.5",
     "image-webpack-loader": "^4.3.1",
     "mini-css-extract-plugin": "^0.4.2",
     "node-sass": "^4.11.0",
