@@ -16,7 +16,7 @@ export class Popup {
     }
     isInit = false;
 
-    openModal(){
+    openModal() {
         document.body.appendChild(this.popupElem);
         let elModal = document.querySelector('.popup-wrap');
         if (this.isInit === false) {
@@ -29,5 +29,9 @@ export class Popup {
             );
         }
         elModal.classList.toggle('active');
+    }
+
+    generateEmailList() {
+        let emails = Object.keys(localStorage);
     }
 }

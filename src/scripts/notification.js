@@ -12,8 +12,9 @@ export class Notification {
         this.popupElem.innerHTML = this.template;
     }
 
-    openModal() {
+    showNotification(email) {
         this.hideNotification();
+        this.popupElem.innerText = `email-адрес ${email} добавлен в систему`;
         document.body.appendChild(this.popupElem);
         let elModal = document.querySelector('.notification');
         elModal.style.left = `calc(50% - ${elModal.clientWidth / 2}px)`;
