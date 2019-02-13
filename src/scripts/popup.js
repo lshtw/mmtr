@@ -25,6 +25,7 @@ export class Popup {
                 (event) => {
                     event.preventDefault();
                     elModal.classList.toggle('active');
+                    document.body.removeChild(this.popupElem);
                 }
             );
         }

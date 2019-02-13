@@ -3,7 +3,7 @@ import { GetStartedForm } from "./get-started-form";
 import { Popup } from "./popup";
 
 window.onload = function () {
-    const RUMAIL = 'gjxnf';
+    const RUMAIL = 'почта';
     const EMAIL = 'email';
     let word = '';
     let video = new VideoEvent();
@@ -17,6 +17,10 @@ window.onload = function () {
             word = '';
         }
         if (word === RUMAIL) {
+            new Popup().openModal();
+            word = '';
+        }
+        if (word === EMAIL) {
             new Popup().openModal();
             word = '';
         }
