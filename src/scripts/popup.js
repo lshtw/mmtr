@@ -3,7 +3,6 @@ export class Popup {
    <div class="popup">
 	<h3 class="popup__header">Заголовок</h3>
 	<div class="popup-data">
-	данные окна
 	</div>
 	<a class="popup__close" title="Закрыть" href="#close"></a>
    </div>
@@ -30,9 +29,25 @@ export class Popup {
             );
         }
         elModal.classList.toggle('active');
+        elModal.querySelector('.popup-data').appendChild(this.generateEmailTable());
     }
 
-    generateEmailList() {
-        let emails = Object.keys(localStorage);
+    generateEmailTable() {
+        let emailsObject = JSON.parse(localStorage.getItem('emails'));
+        let emails = Object.keys(JSON.parse(localStorage.getItem('emails')));
+        console.log(emails);
+        let table = document.createElement('table'), tr, td1,td2;
+        emails.forEach((item) => {
+            tr = document.createElement('tr');
+            td1 = document.createElement('td');
+            td2 = document.createElement('td');
+            td1.innerHTML = item;
+            td2.innerHTML = emailsObject[item];
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            table.appendChild(tr);
+        });
+
+        return table;
     }
 }

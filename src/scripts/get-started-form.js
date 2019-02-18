@@ -1,25 +1,47 @@
 import * as moment from 'moment';
-import { Notification } from "./notification";
+import {Notification} from "./notification";
 
 export class GetStartedForm {
 
     constructor() {
-        this.getStartedForm = document.getElementsByClassName('get-started-form')[0];
-        this.getStartedForm.addEventListener('submit', this.addEmail, false);
+        this.init();
     }
 
-
-    addEmail(event) {
+    init() {
+        this.getStartedForm = document.getElementsByClassName('get-started-form')[0];
         this.emailButton = document.getElementsByClassName('get-started-form__button')[0];
         this.emailInput = document.getElementsByClassName('get-started-form__input')[0];
-        event.preventDefault();
-        new Notification().showNotification(this.emailInput.value);
-        if (localStorage.getItem(this.emailInput.value)) {
-            let arr = JSON.parse(localStorage.getItem(this.emailInput.value));
-            arr.push(moment().toDate());
-            localStorage.setItem(this.emailInput.value, JSON.stringify(arr));
-        } else {
-            localStorage.setItem(this.emailInput.value, JSON.stringify([moment().toDate()]));
-        }
+        let formatDate = 'DD.MM.YYYY HH:mm:ss';
+
+        localStorage.setItem('emails', JSON.stringify({}));
+
+        this.getStartedForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (!this.emailInput.value) {
+                return;
+            }
+            new Notification().showNotification(this.emailInput.value);
+            this.emailInput.blur();
+
+            if (this.emailInput.value in JSON.parse(localStorage.getItem('emails'))) {
+                let obj = JSON.parse(localStorage.getItem('emails'));
+                let arr = obj[this.emailInput.value];
+
+                arr.push(moment(new Date()).format(formatDate));
+                obj[this.emailInput.value] = arr;
+                localStorage.setItem('emails', JSON.stringify(obj));
+            } else {
+                let obj = JSON.parse(localStorage.getItem('emails'));
+                obj[this.emailInput.value] = [moment(new Date()).format(formatDate)];
+
+                localStorage.setItem('emails', JSON.stringify(obj));
+            }
+
+            this.emailInput.value = '';
+        });
+
+        this.getStartedForm.addEventListener('click', () => {
+            this.emailInput.focus();
+        })
     }
 }
