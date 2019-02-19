@@ -1,5 +1,6 @@
 import * as moment from 'moment';
-import {Notification} from "./notification";
+import { Notification } from "./notification";
+import { getActions } from "./actions";
 
 export class GetStartedForm {
 
@@ -20,7 +21,7 @@ export class GetStartedForm {
             if (!this.emailInput.value) {
                 return;
             }
-            new Notification().showNotification(this.emailInput.value);
+            new Notification(getActions().ADD).showNotification(this.emailInput.value);
             this.emailInput.blur();
 
             if (this.emailInput.value in JSON.parse(localStorage.getItem('emails'))) {

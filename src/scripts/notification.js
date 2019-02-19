@@ -1,20 +1,29 @@
+import { getPhrases } from "./localization/get-phrases";
+import { getActions } from "./actions";
+
 export class Notification {
 
-    template = `
- <p>email-адрес добавлен в систему</p>
-`;
 
-    popupElem = document.createElement('div');
-    timer;
 
-    constructor() {
+    constructor(action = getActions().ADD,locale = 'RU') {
+        this.phrases = getPhrases()[locale];
+        this.action = action;
+        this.init();
+
+//         this.template = `
+//  <p>${this.phrases.alertText(email)}</p>
+// `;
+    }
+
+    init() {
+        this.popupElem = document.createElement('div');
         this.popupElem.classList.add('notification');
-        this.popupElem.innerHTML = this.template;
+       // this.popupElem.innerHTML = this.template;
     }
 
     showNotification(email) {
         this.hideNotification();
-        this.popupElem.innerText = `email-адрес ${email} добавлен в систему`;
+        this.popupElem.innerText = this.phrases[this.action](email);
         document.body.appendChild(this.popupElem);
         let elModal = document.querySelector('.notification');
         elModal.style.left = `calc(50% - ${elModal.clientWidth / 2}px)`;

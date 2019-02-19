@@ -1,18 +1,22 @@
+import {getPhrases} from "./localization/get-phrases";
+
 export class Popup {
-    template = `<div class="popup-wrap">
-   <div class="popup">
-	<h3 class="popup__header">Заголовок</h3>
-	<div class="popup-data">
-	</div>
-	<a class="popup__close" title="Закрыть" href="#close"></a>
-   </div>
-</div>`;
 
     popupElem = document.createElement('div');
+    phrases;
 
-    constructor() {
+    constructor(locale = 'RU') {
+        this.phrases = getPhrases()[locale];
+        this.template = `<div class="popup-wrap">
+                            <div class="popup">
+	                            <h3 class="popup__header">${this.phrases.header}</h3>
+	                                <a class="popup__close" title="Закрыть" href="#close"></a>
+                            </div>
+                         </div>`;
+
         this.popupElem.innerHTML = this.template;
     }
+
     isInit = false;
 
     openModal() {
@@ -29,22 +33,40 @@ export class Popup {
             );
         }
         elModal.classList.toggle('active');
-        elModal.querySelector('.popup-data').appendChild(this.generateEmailTable());
+        elModal.querySelector('.popup').appendChild(this.generateEmailTable());
     }
 
     generateEmailTable() {
         let emailsObject = JSON.parse(localStorage.getItem('emails'));
         let emails = Object.keys(JSON.parse(localStorage.getItem('emails')));
-        console.log(emails);
-        let table = document.createElement('table'), tr, td1,td2;
+
+        if (!emails.length) {
+            let span = document.createElement('span');
+            span.innerText = 'net email';
+
+            return span;
+        }
+
+        let table = document.createElement('table'), tr, td1, td2, td3;
+        table.classList.add('popup-data');
+
         emails.forEach((item) => {
             tr = document.createElement('tr');
             td1 = document.createElement('td');
             td2 = document.createElement('td');
+            td3 = document.createElement('td');
             td1.innerHTML = item;
-            td2.innerHTML = emailsObject[item];
+            if (emailsObject[item].length > 1) {
+                let anchor = document.createElement('a');
+                anchor.innerText = 'click';
+                td2.appendChild(anchor);
+            } else {
+                td2.innerHTML = emailsObject[item];
+            }
+            td3.innerHTML = `<button class="button delete-button" data-name="${item}">${this.phrases.remove}</button>`;
             tr.appendChild(td1);
             tr.appendChild(td2);
+            tr.appendChild(td3);
             table.appendChild(tr);
         });
 

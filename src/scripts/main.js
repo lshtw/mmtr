@@ -16,14 +16,12 @@ window.onload = function () {
         } else {
             word = '';
         }
-        if (word === RUMAIL) {
-            new Popup().openModal();
+        if (word === RUMAIL || word === EMAIL) {
+            let locale = word === EMAIL ? 'EN' : 'RU';
+            new Popup(locale).openModal();
             word = '';
         }
-        if (word === EMAIL) {
-            new Popup().openModal();
-            word = '';
-        }
+
     });
 
 };
