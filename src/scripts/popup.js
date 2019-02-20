@@ -1,4 +1,5 @@
-import {getPhrases} from "./localization/get-phrases";
+import { getPhrases } from "./localization/get-phrases";
+import { ContextMenu } from "./context-menu";
 
 export class Popup {
 
@@ -6,7 +7,8 @@ export class Popup {
     phrases;
 
     constructor(locale = 'RU') {
-        this.phrases = getPhrases()[locale];
+        this.locale = locale;
+        this.phrases = getPhrases()[this.locale];
         this.template = `<div class="popup-wrap">
                             <div class="popup">
 	                            <h3 class="popup__header">${this.phrases.header}</h3>
@@ -60,6 +62,16 @@ export class Popup {
                 let anchor = document.createElement('a');
                 anchor.innerText = 'click';
                 td2.appendChild(anchor);
+                anchor.addEventListener('click', (event) => {
+                   let contextMenu = new ContextMenu(emailsObject[item], this.locale);
+                    if (document.contains(document.querySelector('.dropdown-content'))) {
+                        console.log('ad');
+                        contextMenu.hideMenu();
+                    } else {
+                        event.toElement.appendChild(contextMenu.showMenu());
+                        contextMenu.addHideEvent();
+                    }
+                });
             } else {
                 td2.innerHTML = emailsObject[item];
             }
