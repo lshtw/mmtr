@@ -14,8 +14,11 @@ export class ContextMenu {
     }
 
     hideMenu() {
-        window.removeEventListener('click', ()=>{});
-        document.querySelector('.dropdown-content').remove();
+        window.onclick = function (e) {
+            if (!document.querySelector('.dropdown-content').contains(e.target)) {
+                document.querySelector('.dropdown-content').remove();
+            }
+        };
     }
 
     showMenu() {
@@ -25,11 +28,11 @@ export class ContextMenu {
     }
 
     addHideEvent() {
-        window.addEventListener('click', (event) => {
-            if (event.target !== document.querySelector('.dropdown-content') && event.target !== document.querySelector('.dropdown-content').parentNode) {
+        window.onclick = function (e) {
+            if (e.target !== document.querySelector('.dropdown-content') && e.target !== document.querySelector('.dropdown-content').parentNode) {
                 document.querySelector('.dropdown-content').remove();
             }
-        });
+        };
     }
 
     generateItems() {
