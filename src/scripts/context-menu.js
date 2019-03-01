@@ -1,11 +1,14 @@
 import {getPhrases} from "./localization/get-phrases";
+import {getActions} from "./actions";
+import {Notification} from "./notification";
 
 export class ContextMenu {
 
     constructor(email, dates, locale = 'RU') {
         this.email = email;
+        this.locale = locale;
         this.emailsObject = JSON.parse(localStorage.getItem('emails'));
-        this.dates = JSON.parse(localStorage.getItem('emails'))[this.email];
+        this.dates = JSON.parse(localStorage.getItem('emails'))[this.email].reverse();
         this.phrases = getPhrases()[locale];
         this.init();
     }
@@ -40,7 +43,7 @@ export class ContextMenu {
     generateItems() {
         let table = document.createElement('table'), tr, td1, td2;
 
-        this.dates.forEach((item, index) => {
+        this.dates.forEach((item) => {
             tr = document.createElement('tr');
             td1 = document.createElement('td');
             td2 = document.createElement('td');

@@ -1,5 +1,7 @@
 import {getPhrases} from "./localization/get-phrases";
 import {ContextMenu} from "./context-menu";
+import {getActions} from "./actions";
+import {Notification} from "./notification";
 
 export class Popup {
 
@@ -80,9 +82,11 @@ export class Popup {
             }
             td3.innerHTML = `<button class="button delete-button" data-name="${item}">${this.phrases.remove}</button>`;
             td3.firstChild.addEventListener('click', (event) => {
-                delete emailsObject[event.srcElement.getAttribute('data-name')];
+                let email = event.srcElement.getAttribute('data-name');
+                delete emailsObject[email];
                 localStorage.setItem('emails', JSON.stringify(emailsObject));
                 table.removeChild(event.srcElement.parentNode.parentNode);
+                new Notification(getActions().DELETE, this.locale).showNotification(email);
             });
 
             tr.appendChild(td1);

@@ -9,16 +9,11 @@ export class Notification {
         this.phrases = getPhrases()[locale];
         this.action = action;
         this.init();
-
-//         this.template = `
-//  <p>${this.phrases.alertText(email)}</p>
-// `;
     }
 
     init() {
         this.popupElem = document.createElement('div');
         this.popupElem.classList.add('notification');
-       // this.popupElem.innerHTML = this.template;
     }
 
     showNotification(email) {
