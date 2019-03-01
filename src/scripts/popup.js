@@ -1,5 +1,5 @@
-import { getPhrases } from "./localization/get-phrases";
-import { ContextMenu } from "./context-menu";
+import {getPhrases} from "./localization/get-phrases";
+import {ContextMenu} from "./context-menu";
 
 export class Popup {
 
@@ -44,7 +44,7 @@ export class Popup {
 
         if (!emails.length) {
             let span = document.createElement('span');
-            span.innerText = 'net email';
+            span.innerText = this.phrases.emptyEmails;
 
             return span;
         }
@@ -62,20 +62,29 @@ export class Popup {
                 let anchor = document.createElement('a');
                 anchor.innerText = 'click';
                 td2.appendChild(anchor);
-                anchor.addEventListener('click', (event) => {
-                   let contextMenu = new ContextMenu(emailsObject[item], this.locale);
+                anchor.addEventListener('contextmenu', (event) => {
+                    event.preventDefault();
+                    let contextMenu = new ContextMenu(item, emailsObject[item], this.locale);
                     if (document.contains(document.querySelector('.dropdown-content'))) {
-                        console.log('ad');
                         contextMenu.hideMenu();
                     } else {
                         event.toElement.appendChild(contextMenu.showMenu());
                         contextMenu.addHideEvent();
+                    }
+                    if (emailsObject[item].length === 0) {
+                        table.removeChild(event.srcElement.parentNode.parentNode);
                     }
                 });
             } else {
                 td2.innerHTML = emailsObject[item];
             }
             td3.innerHTML = `<button class="button delete-button" data-name="${item}">${this.phrases.remove}</button>`;
+            td3.firstChild.addEventListener('click', (event) => {
+                delete emailsObject[event.srcElement.getAttribute('data-name')];
+                localStorage.setItem('emails', JSON.stringify(emailsObject));
+                table.removeChild(event.srcElement.parentNode.parentNode);
+            });
+
             tr.appendChild(td1);
             tr.appendChild(td2);
             tr.appendChild(td3);
