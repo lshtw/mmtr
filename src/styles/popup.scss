@@ -26,11 +26,14 @@
     border-radius: 10px;
     background: #fff;
 
+    &__header {
+      margin-bottom: 16px;
+    }
+
     &-data {
       width: 100%;
-      text-align: center;
       font-family: 'Brown Light', sans-serif;
-      font-size: 16px;
+      font-size: 18px;
     }
 
     &__close {

@@ -14,7 +14,9 @@ export class GetStartedForm {
         this.emailInput = document.getElementsByClassName('get-started-form__input')[0];
         let formatDate = 'DD.MM.YYYY HH:mm:ss';
 
-        localStorage.setItem('emails', JSON.stringify({}));
+        if (!localStorage.getItem('emails')) {
+            localStorage.setItem('emails', JSON.stringify({}));
+        }
 
         this.getStartedForm.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -28,7 +30,7 @@ export class GetStartedForm {
                 let obj = JSON.parse(localStorage.getItem('emails'));
                 let arr = obj[this.emailInput.value];
 
-                arr.push(moment(new Date()).format(formatDate));
+                arr.unshift(moment(new Date()).format(formatDate));
                 obj[this.emailInput.value] = arr;
                 localStorage.setItem('emails', JSON.stringify(obj));
             } else {

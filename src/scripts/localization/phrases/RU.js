@@ -10,6 +10,7 @@ export function phrasesRU() {
         delete: function (email) {
             return `email ${email} удален`
         },
-        emptyEmails: 'Нет email-адресов'
+        emptyEmails: 'Нет email-адресов',
+        listOfDates: 'Список дат'
     }
 }

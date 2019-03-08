@@ -6,7 +6,7 @@ export class ContextMenu {
         this.email = email;
         this.locale = locale;
         this.emailsObject = JSON.parse(localStorage.getItem('emails'));
-        this.dates = JSON.parse(localStorage.getItem('emails'))[this.email].reverse();
+        this.dates = JSON.parse(localStorage.getItem('emails'))[this.email];
         this.phrases = getPhrases()[locale];
         this.init();
     }
@@ -14,14 +14,6 @@ export class ContextMenu {
     init() {
         this.contextMenu = document.createElement('div');
         this.contextMenu.classList.add('dropdown-content');
-    }
-
-    hideMenu() {
-        window.onclick = function (e) {
-            if (!document.querySelector('.dropdown-content').contains(e.target)) {
-                document.querySelector('.dropdown-content').remove();
-            }
-        };
     }
 
     showMenu() {
@@ -32,8 +24,9 @@ export class ContextMenu {
 
     addHideEvent() {
         window.onclick = function (e) {
-            if (e.target !== document.querySelector('.dropdown-content') && e.target !== document.querySelector('.dropdown-content').parentNode) {
+            if (!e.srcElement.closest('.dropdown-content')) {
                 document.querySelector('.dropdown-content').remove();
+                window.onclick = null;
             }
         };
     }
@@ -53,7 +46,7 @@ export class ContextMenu {
                 let date = event.srcElement.getAttribute('data-name');
                 let index = this.emailsObject[this.email].indexOf(date);
 
-                this.emailsObject[this.email].splice(index, index + 1);
+                this.emailsObject[this.email].splice(index, 1);
                 localStorage.setItem('emails', JSON.stringify(this.emailsObject));
                 table.removeChild(event.srcElement.parentNode.parentNode);
 

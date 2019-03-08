@@ -10,6 +10,7 @@ export function phrasesEN() {
         delete: function (email) {
             return `email ${email} deleted`
         },
-        emptyEmails: 'no emails'
+        emptyEmails: 'no emails',
+        listOfDates: 'List of dates'
     }
 }

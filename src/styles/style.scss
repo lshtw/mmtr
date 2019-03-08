@@ -557,5 +557,8 @@ body {
 .footer-bg {
   background-color: map_get($colors, head-card-color);
 }
+.overflow-hidden {
+  overflow: hidden;
+}
 
 @import 'media';
