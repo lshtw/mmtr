@@ -1,11 +1,10 @@
-import { getPhrases } from "./localization/get-phrases";
-import { getActions } from "./actions";
+import {getPhrases} from './localization/get-phrases';
+import {getActions} from './actions';
 
 export class Notification {
 
 
-
-    constructor(action = getActions().ADD,locale = 'RU') {
+    constructor(action = getActions().ADD, locale = 'RU') {
         this.phrases = getPhrases()[locale];
         this.action = action;
         this.init();

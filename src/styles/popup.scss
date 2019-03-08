@@ -34,11 +34,13 @@
     }
 
     &__close {
+      cursor: pointer;
       position: absolute;
-      top: -10px;
-      right: -10px;padding: 0;
-      width: 20px;
-      height: 20px;
+      top: -12px;
+      right: -12px;
+      padding: 0;
+      width: 24px;
+      height: 24px;
       border: 2px solid #ccc;
       border-radius: 15px;
       background-color: rgba(61, 61, 61, 0.8);
@@ -46,14 +48,14 @@
       text-align: center;
       text-decoration: none;
       font-weight: bold;
-      line-height: 20px;
+      line-height: 24px;
       transition: all ease .8s;
 
       &:before {
         color: rgba(255, 255, 255, 0.9);
-        content: 'X';
+        content: '\2716';
         text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
-        font-size: 12px;
+        font-size: 14px;
       }
       &:hover {
         background-color: rgba(252, 20, 0, 0.8);

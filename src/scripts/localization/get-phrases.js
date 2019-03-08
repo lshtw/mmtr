@@ -1,9 +1,9 @@
-import { phrasesRU } from "./phrases/RU";
-import { phrasesEN } from "./phrases/EN";
+import {phrasesRU} from './phrases/RU';
+import {phrasesEN} from './phrases/EN';
 
 export function getPhrases() {
     return {
-        'RU': phrasesRU(),
-        'EN': phrasesEN()
+        RU: phrasesRU(),
+        EN: phrasesEN()
     }
 }

@@ -1,7 +1,9 @@
-import {getPhrases} from "./localization/get-phrases";
-import {ContextMenu} from "./context-menu";
-import {getActions} from "./actions";
-import {Notification} from "./notification";
+import {getPhrases} from './localization/get-phrases';
+import {ContextMenu} from './context-menu';
+import {getActions} from './actions';
+import {Notification} from './notification';
+
+let isInit = false;
 
 export class Popup {
 
@@ -14,30 +16,37 @@ export class Popup {
         this.template = `<div class="popup-wrap">
                             <div class="popup">
 	                            <h3 class="popup__header">${this.phrases.header}</h3>
-	                                <a class="popup__close" title="Закрыть" href="#close"></a>
+	                                <span class="popup__close" title="Закрыть"></span>
                             </div>
                          </div>`;
 
         this.popupElem.innerHTML = this.template;
     }
 
-    isInit = false;
+
+    static isInit() {
+        return isInit;
+    }
 
     openModal() {
-        document.body.appendChild(this.popupElem);
-        let elModal = document.querySelector('.popup-wrap');
-        if (this.isInit === false) {
-            this.isInit = true;
+        if (!isInit) {
+            isInit = true;
+            document.body.appendChild(this.popupElem);
+            let elModal = document.querySelector('.popup-wrap');
             document.querySelector('.popup__close').addEventListener('click',
                 (event) => {
                     event.preventDefault();
                     elModal.classList.toggle('active');
                     document.body.removeChild(this.popupElem);
+                    isInit = false;
                 }
             );
+            elModal.classList.toggle('active');
+            elModal.querySelector('.popup').appendChild(this.generateEmailTable());
+        } else {
+            return;
         }
-        elModal.classList.toggle('active');
-        elModal.querySelector('.popup').appendChild(this.generateEmailTable());
+
     }
 
     generateEmailTable() {

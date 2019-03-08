@@ -1,6 +1,6 @@
-import { VideoEvent } from './videos.js';
-import { GetStartedForm } from "./get-started-form";
-import { Popup } from "./popup";
+import {VideoEvent} from './videos.js';
+import {GetStartedForm} from './get-started-form';
+import {Popup} from './popup';
 
 window.onload = function () {
     const RUMAIL = 'почта';
@@ -18,7 +18,12 @@ window.onload = function () {
         }
         if (word === RUMAIL || word === EMAIL) {
             let locale = word === EMAIL ? 'EN' : 'RU';
-            new Popup(locale).openModal();
+
+            if (!Popup.isInit()) {
+                new Popup(locale).openModal();
+            } else {
+                return;
+            }
             word = '';
         }
 
