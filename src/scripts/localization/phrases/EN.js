@@ -11,6 +11,9 @@ export function phrasesEN() {
             return `email ${email} deleted`
         },
         emptyEmails: 'no emails',
-        listOfDates: 'List of dates'
+        listOfDates: 'List of dates',
+        deleteDate: function (date) {
+            return `date ${date} deleted`
+        }
     }
 }

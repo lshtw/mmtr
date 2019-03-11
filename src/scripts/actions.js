@@ -1,6 +1,7 @@
 export function getActions() {
     return {
         DELETE : 'delete',
-        ADD: 'add'
+        ADD: 'add',
+        DELETE_DATE: 'deleteDate'
     }
 }

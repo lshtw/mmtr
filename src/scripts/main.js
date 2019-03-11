@@ -1,10 +1,11 @@
 import {VideoEvent} from './videos.js';
 import {GetStartedForm} from './get-started-form';
 import {Popup} from './popup';
+import {CONSTANTS} from './constants';
 
 window.onload = function () {
-    const RUMAIL = 'почта';
-    const EMAIL = 'email';
+    const RUMAIL = CONSTANTS.RUMAIL;
+    const EMAIL = CONSTANTS.EMAIL;
     let word = '';
     let video = new VideoEvent();
     let getStartedForm = new GetStartedForm();

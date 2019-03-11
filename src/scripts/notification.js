@@ -5,7 +5,8 @@ export class Notification {
 
 
     constructor(action = getActions().ADD, locale = 'RU') {
-        this.phrases = getPhrases()[locale];
+        this.locale = locale;
+        this.phrases = getPhrases()[this.locale];
         this.action = action;
         this.init();
     }
@@ -15,9 +16,9 @@ export class Notification {
         this.popupElem.classList.add('notification');
     }
 
-    showNotification(email) {
+    showNotification(data) {
         this.hideNotification();
-        this.popupElem.innerText = this.phrases[this.action](email);
+        this.popupElem.innerText = this.phrases[this.action](data);
         document.body.appendChild(this.popupElem);
         let elModal = document.querySelector('.notification');
         elModal.style.left = `calc(50% - ${elModal.clientWidth / 2}px)`;

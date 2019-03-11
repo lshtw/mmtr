@@ -1,4 +1,6 @@
 import {getPhrases} from './localization/get-phrases';
+import {Notification} from './notification';
+import {getActions} from './actions';
 
 export class ContextMenu {
 
@@ -23,21 +25,26 @@ export class ContextMenu {
     }
 
     addHideEvent() {
-        window.onclick = function (e) {
-            if (!e.srcElement.closest('.dropdown-content')) {
+        let wrap = document.querySelector('.popup-wrap');
+
+        wrap.onclick = function (e) {
+            e.stopPropagation();
+
+            if (!e.srcElement.closest('.dropdown-content.show') || e.srcElement !== document.querySelector('.dropdown-content.show')) {
                 document.querySelector('.dropdown-content').remove();
-                window.onclick = null;
+                wrap.onclick = null;
             }
         };
     }
 
     generateItems() {
-        let table = document.createElement('table'), tr, td1, td2;
+        let table = document.createElement('table');
 
         this.dates.forEach((item) => {
-            tr = document.createElement('tr');
-            td1 = document.createElement('td');
-            td2 = document.createElement('td');
+            let tr = document.createElement('tr'),
+                td1 = document.createElement('td'),
+                td2 = document.createElement('td');
+
             td1.innerHTML = item;
             td2.innerHTML = `<button class="button delete-button" data-name="${item}">${this.phrases.remove}</button>`;
 
@@ -49,10 +56,10 @@ export class ContextMenu {
                 this.emailsObject[this.email].splice(index, 1);
                 localStorage.setItem('emails', JSON.stringify(this.emailsObject));
                 table.removeChild(event.srcElement.parentNode.parentNode);
+                new Notification(getActions().DELETE_DATE, this.locale).showNotification(date);
 
                 if (this.emailsObject[this.email].length === 1) {
                     this.contextMenu.closest('td').innerHTML = this.emailsObject[this.email];
-                    window.onclick = null;
                 }
                 if (this.emailsObject[this.email].length === 0) {
                     this.contextMenu.closest('tr').remove();

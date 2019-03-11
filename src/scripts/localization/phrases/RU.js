@@ -11,6 +11,9 @@ export function phrasesRU() {
             return `email ${email} удален`
         },
         emptyEmails: 'Нет email-адресов',
-        listOfDates: 'Список дат'
+        listOfDates: 'Список дат',
+        deleteDate: function (date) {
+            return `дата ${date} удалена`
+        }
     }
 }

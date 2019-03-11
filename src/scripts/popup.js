@@ -2,24 +2,21 @@ import {getPhrases} from './localization/get-phrases';
 import {ContextMenu} from './context-menu';
 import {getActions} from './actions';
 import {Notification} from './notification';
+import {CONSTANTS} from './constants';
 
 let isInit = false;
 
 export class Popup {
 
-    popupElem = document.createElement('div');
-    phrases;
-
     constructor(locale = 'RU') {
         this.locale = locale;
         this.phrases = getPhrases()[this.locale];
-        this.template = `<div class="popup-wrap">
-                            <div class="popup">
+        this.popupElem = document.createElement('div');
+        this.popupElem.classList.add('popup-wrap');
+        this.template = `<div class="popup">
 	                            <h3 class="popup__header">${this.phrases.header}</h3>
 	                                <span class="popup__close" title="Закрыть"></span>
-                            </div>
-                         </div>`;
-
+                            </div>`;
         this.popupElem.innerHTML = this.template;
     }
 
@@ -35,9 +32,21 @@ export class Popup {
     }
 
     clickEscape(event) {
-        if (event.keyCode === 27) {
+        if (event.keyCode === CONSTANTS.ESCAPE_CODE) {
             document.querySelector('.popup__close').click();
         }
+    }
+
+    closeModal() {
+        let elModal = document.querySelector('.popup-wrap');
+
+        document.body.removeChild(elModal);
+        elModal.removeEventListener('click', this.clickPastModal);
+        document.body.removeEventListener('keydown', this.clickEscape);
+
+        document.body.classList.toggle('overflow-hidden');
+        isInit = false;
+        elModal.onclick = null;
     }
 
     openModal() {
@@ -46,29 +55,13 @@ export class Popup {
             document.body.appendChild(this.popupElem);
             let elModal = document.querySelector('.popup-wrap');
 
+            document.querySelector('.popup__close').addEventListener('click', this.closeModal, true);
             elModal.addEventListener('click', this.clickPastModal);
             document.body.addEventListener('keydown', this.clickEscape);
+
             document.body.classList.toggle('overflow-hidden');
-
-            document.querySelector('.popup__close').addEventListener('click',
-                (event) => {
-                    event.preventDefault();
-                    elModal.classList.toggle('active');
-                    document.body.removeChild(this.popupElem);
-                    elModal.removeEventListener('click', this.clickPastModal);
-                    document.body.removeEventListener('keydown', this.clickEscape);
-                    document.body.classList.toggle('overflow-hidden');
-                    isInit = false;
-
-                    window.onclick = null;
-                }
-            );
-            elModal.classList.toggle('active');
             elModal.querySelector('.popup').appendChild(this.generateEmailTable());
-        } else {
-            return;
         }
-
     }
 
     generateEmailTable() {
@@ -94,17 +87,19 @@ export class Popup {
             td1.innerHTML = item;
 
             if (emailsObject[item].length > 1) {
-                let anchor = document.createElement('a');
+                let anchor = document.createElement('span');
 
                 anchor.innerHTML = this.phrases.listOfDates + ' &#9776;';
                 td2.appendChild(anchor);
 
-                anchor.addEventListener('contextmenu', (event) => {
-                    event.preventDefault();
+                anchor.addEventListener('click', (event) => {
+                    event.stopPropagation();
                     let contextMenu = new ContextMenu(item, emailsObject[item], this.locale);
 
                     if (document.contains(document.querySelector('.dropdown-content'))) {
-                        contextMenu.addHideEvent();
+                        if (event.srcElement === anchor) {
+                            document.querySelector('.dropdown-content').remove();
+                        }
                     } else {
                         event.toElement.appendChild(contextMenu.showMenu());
                         contextMenu.addHideEvent();

@@ -7,16 +7,12 @@
   background: rgba(0,0,0,0.8);
   z-index: 10;
   transition: opacity 400ms ease-in;
-  display: none;
-  pointer-events: none;
-
-  &.active {
-    display: block;
-    pointer-events: auto;
-  }
+  display: block;
+  pointer-events: auto;
 
   & .popup {
-    width: 494px;
+    width: auto;
+    min-width: 550px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -25,31 +21,35 @@
     padding: 16px 16px 13px 16px;
     border-radius: 10px;
     background: #fff;
+    font-family: 'Brown Light', sans-serif;
 
     &__header {
       margin-bottom: 16px;
+      font-size: 20px;
     }
 
     &-data {
       width: 100%;
-      font-family: 'Brown Light', sans-serif;
       font-size: 18px;
+      & .button {
+        width: 100%;
+        line-height: 2;
+        font-size: 16px;
+      }
     }
 
     &__close {
       cursor: pointer;
       position: absolute;
-      top: -12px;
-      right: -12px;
+      top: 5px;
+      right: 5px;
       padding: 0;
       width: 24px;
       height: 24px;
       border: 2px solid #ccc;
-      border-radius: 15px;
+      border-radius: 50%;
       background-color: rgba(61, 61, 61, 0.8);
-      box-shadow: 0 0 10px #000;
       text-align: center;
-      text-decoration: none;
       font-weight: bold;
       line-height: 24px;
       transition: all ease .8s;
@@ -58,7 +58,6 @@
         color: rgba(255, 255, 255, 0.9);
         content: '\2716';
         text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
-        font-size: 14px;
       }
       &:hover {
         background-color: rgba(252, 20, 0, 0.8);
