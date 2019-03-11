@@ -11,7 +11,7 @@ window.onload = function () {
     video.addEvents();
 
     document.body.addEventListener('keypress', (event) => {
-        if (RUMAIL.indexOf(event.key) === word.length || EMAIL.indexOf(event.key) === word.length) {
+        if ((RUMAIL.indexOf(event.key) === word.length || EMAIL.indexOf(event.key) === word.length) && event.target.nodeName !== 'INPUT') {
             word += event.key;
         } else {
             word = '';
@@ -21,8 +21,6 @@ window.onload = function () {
 
             if (!Popup.isInit()) {
                 new Popup(locale).openModal();
-            } else {
-                return;
             }
             word = '';
         }

@@ -82,14 +82,15 @@ export class Popup {
             return span;
         }
 
-        let table = document.createElement('table'), tr, td1, td2, td3;
+        let table = document.createElement('table');
         table.classList.add('popup-data');
 
         emails.forEach((item) => {
-            tr = document.createElement('tr');
-            td1 = document.createElement('td');
-            td2 = document.createElement('td');
-            td3 = document.createElement('td');
+            let tr = document.createElement('tr'),
+                td1 = document.createElement('td'),
+                td2 = document.createElement('td'),
+                td3 = document.createElement('td');
+
             td1.innerHTML = item;
 
             if (emailsObject[item].length > 1) {
@@ -119,10 +120,12 @@ export class Popup {
             td3.firstChild.addEventListener('click', (event) => {
                 event.stopPropagation();
                 let email = event.srcElement.getAttribute('data-name');
+
                 delete emailsObject[email];
                 localStorage.setItem('emails', JSON.stringify(emailsObject));
                 table.removeChild(event.srcElement.parentNode.parentNode);
                 new Notification(getActions().DELETE, this.locale).showNotification(email);
+
                 if (Object.keys(emailsObject).length === 0) {
                     table.innerHTML = this.phrases.emptyEmails;
                 }
