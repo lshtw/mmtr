@@ -30,11 +30,19 @@ export class ContextMenu {
         wrap.onclick = function (e) {
             e.stopPropagation();
 
-            if (!e.srcElement.closest('.dropdown-content.show') || e.srcElement !== document.querySelector('.dropdown-content.show')) {
+            if (!document.querySelector('.dropdown-content')) {
+                return;
+            }
+
+            if (!e.srcElement.closest('.dropdown-content') || e.srcElement !== document.querySelector('.dropdown-content')) {
                 document.querySelector('.dropdown-content').remove();
                 wrap.onclick = null;
             }
         };
+    }
+
+    get getContextMenu() {
+        return document.querySelector('.dropdown-content');
     }
 
     generateItems() {

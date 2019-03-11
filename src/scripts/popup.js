@@ -38,35 +38,60 @@ export class Popup {
     }
 
     closeModal() {
-        let elModal = document.querySelector('.popup-wrap');
+        this.popupWrapper.remove();
 
-        document.body.removeChild(elModal);
-        elModal.removeEventListener('click', this.clickPastModal);
+        // elModal.removeEventListener('click', this.clickPastModal);
         document.body.removeEventListener('keydown', this.clickEscape);
 
         document.body.classList.toggle('overflow-hidden');
         isInit = false;
-        elModal.onclick = null;
+        this.popupWrapper.onclick = null;
     }
 
     openModal() {
         if (!isInit) {
             isInit = true;
             document.body.appendChild(this.popupElem);
-            let elModal = document.querySelector('.popup-wrap');
-
-            document.querySelector('.popup__close').addEventListener('click', this.closeModal, true);
-            elModal.addEventListener('click', this.clickPastModal);
+            document.querySelector('.popup__close').addEventListener('click', () => {this.closeModal()}, true);
+            this.popupWrapper.addEventListener('click', this.clickPastModal);
             document.body.addEventListener('keydown', this.clickEscape);
 
             document.body.classList.toggle('overflow-hidden');
-            elModal.querySelector('.popup').appendChild(this.generateEmailTable());
+            this.popupWrapper.querySelector('.popup').appendChild(this.generateEmailTable());
         }
     }
 
+    clickOnDateListElement(event, item, emailsObject) {
+        event.stopPropagation();
+        let contextMenu = new ContextMenu(item, emailsObject[item], this.locale);
+
+
+        if (document.contains(contextMenu.getContextMenu)) {
+            if (!contextMenu.getContextMenu.contains(event.srcElement)) {
+                contextMenu.getContextMenu.remove();
+                this.popupWrapper.onclick = null;
+            }
+        } else {
+            event.toElement.appendChild(contextMenu.showMenu());
+            contextMenu.addHideEvent();
+        }
+    }
+
+    get popupWrapper() {
+        return this.popupElem;
+    }
+
+    get emailsObject() {
+        return JSON.parse(localStorage.getItem('emails'));
+    }
+
+    get emails() {
+        return Object.keys(this.emailsObject);
+    }
+
     generateEmailTable() {
-        let emailsObject = JSON.parse(localStorage.getItem('emails'));
-        let emails = Object.keys(JSON.parse(localStorage.getItem('emails')));
+        let emailsObject = this.emailsObject;
+        let emails = this.emails;
 
         if (!emails.length) {
             let span = document.createElement('span');
@@ -92,21 +117,8 @@ export class Popup {
                 anchor.innerHTML = this.phrases.listOfDates + ' &#9776;';
                 td2.appendChild(anchor);
 
-                anchor.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    let contextMenu = new ContextMenu(item, emailsObject[item], this.locale);
-
-                    if (document.contains(document.querySelector('.dropdown-content'))) {
-                        if (event.srcElement === anchor) {
-                            document.querySelector('.dropdown-content').remove();
-                        }
-                    } else {
-                        event.toElement.appendChild(contextMenu.showMenu());
-                        contextMenu.addHideEvent();
-                    }
-                    if (emailsObject[item].length === 0) {
-                        table.removeChild(event.srcElement.parentNode.parentNode);
-                    }
+                anchor.addEventListener('click', () => {
+                    this.clickOnDateListElement(event, item, emailsObject)
                 });
             } else {
                 td2.innerHTML = emailsObject[item];
@@ -123,6 +135,7 @@ export class Popup {
 
                 if (Object.keys(emailsObject).length === 0) {
                     table.innerHTML = this.phrases.emptyEmails;
+                    this.popupWrapper.onclick = null;
                 }
             });
 
