@@ -4,22 +4,47 @@ import {getActions} from './actions';
 
 export class ContextMenu {
 
-    constructor(email, dates, locale = 'RU') {
+    constructor(target, email, index, locale = 'RU') {
+        this.target = target;
         this.email = email;
+        this.index = index;
         this.locale = locale;
         this.emailsObject = JSON.parse(localStorage.getItem('emails'));
         this.dates = JSON.parse(localStorage.getItem('emails'))[this.email];
         this.phrases = getPhrases()[locale];
+
         this.init();
     }
 
     init() {
         this.contextMenu = document.createElement('div');
         this.contextMenu.classList.add('dropdown-content');
+
+        let deleteItem = document.createElement('div');
+        deleteItem.classList.add('dropdown-content__item');
+        deleteItem.innerHTML = `<span class="delete_item" data-email="${this.email}" data-id="${this.index}">${this.phrases.remove}</span>`;
+
+        this.contextMenu.appendChild(deleteItem);
+
+        deleteItem.firstChild.addEventListener('click', (event) => {
+            event.stopPropagation();
+
+            let td = event.srcElement.closest('td');
+            let date = this.emailsObject[this.email][this.index];
+
+            this.emailsObject[this.email].splice(this.index, 1);
+            localStorage.setItem('emails', JSON.stringify(this.emailsObject));
+
+            this.target.remove();
+            new Notification(getActions().DELETE_DATE, this.locale).showNotification(date);
+
+            if (this.emailsObject[this.email].length === 1) {
+                td.innerHTML = this.emailsObject[this.email];
+            }
+        });
     }
 
     showMenu() {
-        this.contextMenu.appendChild(this.generateItems());
         this.contextMenu.classList.add('show');
         return this.contextMenu;
     }
@@ -34,7 +59,8 @@ export class ContextMenu {
                 return;
             }
 
-            if (!e.srcElement.closest('.dropdown-content') || e.srcElement !== document.querySelector('.dropdown-content')) {
+            if (!e.srcElement.closest('.dropdown-content')) {
+                console.log('aa');
                 document.querySelector('.dropdown-content').remove();
                 wrap.onclick = null;
             }
@@ -43,42 +69,5 @@ export class ContextMenu {
 
     get getContextMenu() {
         return document.querySelector('.dropdown-content');
-    }
-
-    generateItems() {
-        let table = document.createElement('table');
-
-        this.dates.forEach((item) => {
-            let tr = document.createElement('tr'),
-                td1 = document.createElement('td'),
-                td2 = document.createElement('td');
-
-            td1.innerHTML = item;
-            td2.innerHTML = `<button class="button delete-button" data-name="${item}">${this.phrases.remove}</button>`;
-
-            td2.firstChild.addEventListener('click', (event) => {
-                event.stopPropagation();
-                let date = event.srcElement.getAttribute('data-name');
-                let index = this.emailsObject[this.email].indexOf(date);
-
-                this.emailsObject[this.email].splice(index, 1);
-                localStorage.setItem('emails', JSON.stringify(this.emailsObject));
-                table.removeChild(event.srcElement.parentNode.parentNode);
-                new Notification(getActions().DELETE_DATE, this.locale).showNotification(date);
-
-                if (this.emailsObject[this.email].length === 1) {
-                    this.contextMenu.closest('td').innerHTML = this.emailsObject[this.email];
-                }
-                if (this.emailsObject[this.email].length === 0) {
-                    this.contextMenu.closest('tr').remove();
-                }
-            });
-
-            tr.appendChild(td1);
-            tr.appendChild(td2);
-            table.appendChild(tr);
-        });
-
-        return table;
     }
 }

@@ -55,26 +55,15 @@ export class Popup {
             document.querySelector('.popup__close').addEventListener('click', () => {this.closeModal()}, true);
             this.popupWrapper.addEventListener('click', this.clickPastModal);
             document.body.addEventListener('keydown', this.clickEscape);
-
             document.body.classList.toggle('overflow-hidden');
             this.popupWrapper.querySelector('.popup').appendChild(this.generateEmailTable());
         }
     }
 
-    clickOnDateListElement(event, item, emailsObject) {
+    clickOnDateListElement(event) {
         event.stopPropagation();
-        let contextMenu = new ContextMenu(item, emailsObject[item], this.locale);
 
-
-        if (document.contains(contextMenu.getContextMenu)) {
-            if (!contextMenu.getContextMenu.contains(event.srcElement)) {
-                contextMenu.getContextMenu.remove();
-                this.popupWrapper.onclick = null;
-            }
-        } else {
-            event.toElement.appendChild(contextMenu.showMenu());
-            contextMenu.addHideEvent();
-        }
+        event.target.nextElementSibling.classList.toggle('active');
     }
 
     get popupWrapper() {
@@ -103,29 +92,57 @@ export class Popup {
         let table = document.createElement('table');
         table.classList.add('popup-data');
 
-        emails.forEach((item) => {
+        emails.forEach((email) => {
             let tr = document.createElement('tr'),
                 td1 = document.createElement('td'),
                 td2 = document.createElement('td'),
                 td3 = document.createElement('td');
 
-            td1.innerHTML = item;
+            tr.classList.add('table-row');
+            td1.innerHTML = email;
 
-            if (emailsObject[item].length > 1) {
+            if (emailsObject[email].length > 1) {
                 let anchor = document.createElement('span');
+                let div = document.createElement('div');
 
                 anchor.innerHTML = this.phrases.listOfDates + ' &#9776;';
                 td2.appendChild(anchor);
+                div.classList.add('item');
 
-                anchor.addEventListener('click', () => {
-                    this.clickOnDateListElement(event, item, emailsObject)
+                emailsObject[email].forEach((item, index) => {
+                    let dateElement = document.createElement('p');
+
+                    dateElement.classList.add('info');
+                    dateElement.innerText = item;
+                    div.appendChild(dateElement);
+
+                    dateElement.addEventListener('contextmenu', (event) => {
+                        event.preventDefault();
+
+                        let contextMenu = new ContextMenu(event.target, email, index, this.locale);
+
+                        if (document.contains(contextMenu.getContextMenu)) {
+                            if (!contextMenu.getContextMenu.contains(event.srcElement)) {
+                                contextMenu.getContextMenu.remove();
+                                this.popupWrapper.onclick = null;
+                            }
+                        } else {
+                            event.toElement.appendChild(contextMenu.showMenu());
+                            contextMenu.addHideEvent();
+                        }
+                    })
                 });
+
+                td2.appendChild(div);
+
+                anchor.addEventListener('click', this.clickOnDateListElement);
             } else {
-                td2.innerHTML = emailsObject[item];
+                td2.innerHTML = emailsObject[email];
             }
-            td3.innerHTML = `<button class="button" data-name="${item}">${this.phrases.remove}</button>`;
+            td3.innerHTML = `<button class="button" data-name="${email}">${this.phrases.remove}</button>`;
             td3.firstChild.addEventListener('click', (event) => {
                 event.stopPropagation();
+
                 let email = event.srcElement.getAttribute('data-name');
 
                 delete emailsObject[email];
