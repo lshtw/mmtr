@@ -107,12 +107,12 @@ export class Popup {
 
                 anchor.innerHTML = this.phrases.listOfDates + ' &#9776;';
                 td2.appendChild(anchor);
-                div.classList.add('item');
+                div.classList.add('date-list');
 
                 emailsObject[email].forEach((item, index) => {
                     let dateElement = document.createElement('p');
 
-                    dateElement.classList.add('info');
+                    dateElement.classList.add('date-list__item');
                     dateElement.innerText = item;
                     div.appendChild(dateElement);
 

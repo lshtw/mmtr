@@ -64,31 +64,37 @@
   }
 }
 
-.item {
+.date-list {
   background: #fff;
   width: 90%;
   box-sizing: border-box;
   font-size: 18px;
   margin: 6px 0;
   transition: .5s;
+
+  &__item {
+    width: 90%;
+    color: #808080;
+    max-height: 0;
+    opacity: 0;
+    transition: .5s;
+  }
+
+  &.active {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    .date-list__item {
+      max-height: 100%;
+      padding: 10px;
+      opacity: 1;
+    }
+  }
 }
 
-.info {
-  width: 90%;
-  color: #808080;
-  max-height: 0;
-  opacity: 0;
-  transition: .5s;
-}
 
 .item.active >  .info {
-  max-height: 100%;
-  padding: 10px;
-  opacity: 1;
-}
-.item.active {
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-  margin-top: 8px;
-  margin-bottom: 8px;
+
 }
 
