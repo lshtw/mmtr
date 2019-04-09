@@ -1,3 +1,5 @@
+@import 'vars';
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -14,7 +16,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: #a0a0ff;
+      background-color: map_get($colors, button-hover);
 
       & .delete_item {
         &:after {
@@ -24,6 +26,8 @@
     }
 
     & .delete_item {
+      display: block;
+
       &:after {
         content: '\2716';
         font-size: 14px;
