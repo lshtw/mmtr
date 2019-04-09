@@ -12,6 +12,7 @@
 
   & .popup {
     width: auto;
+    max-height: 60%;
     min-width: 550px;
     position: absolute;
     top: 50%;
@@ -22,6 +23,7 @@
     border-radius: 10px;
     background: #fff;
     font-family: 'Brown Light', sans-serif;
+    overflow-y: auto;
 
     &__header {
       margin-bottom: 16px;
@@ -73,6 +75,7 @@
   font-size: 18px;
   margin: 6px 0;
   transition: .5s;
+  position: relative;
 
   &__item {
     width: 90%;
@@ -80,6 +83,7 @@
     max-height: 0;
     opacity: 0;
     transition: .5s;
+    cursor: context-menu;
   }
 
   &.active {
@@ -95,3 +99,6 @@
   }
 }
 
+.toggle-date-list {
+  cursor: pointer;
+}

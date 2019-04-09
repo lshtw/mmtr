@@ -4,8 +4,8 @@ import {getActions} from './actions';
 
 export class ContextMenu {
 
-    constructor(target, email, index, locale = 'RU') {
-        this.target = target;
+    constructor(event, email, index, locale = 'RU') {
+        this.target = event.target;
         this.email = email;
         this.index = index;
         this.locale = locale;
@@ -19,6 +19,8 @@ export class ContextMenu {
     init() {
         this.contextMenu = document.createElement('div');
         this.contextMenu.classList.add('dropdown-content');
+        this.contextMenu.style.top = `${event.offsetY}px`;
+        this.contextMenu.style.left = `${event.offsetX}px`;
 
         let deleteItem = document.createElement('div');
         deleteItem.classList.add('dropdown-content__item');
@@ -60,7 +62,6 @@ export class ContextMenu {
             }
 
             if (!e.srcElement.closest('.dropdown-content')) {
-                console.log('aa');
                 document.querySelector('.dropdown-content').remove();
                 wrap.onclick = null;
             }
@@ -69,5 +70,9 @@ export class ContextMenu {
 
     get getContextMenu() {
         return document.querySelector('.dropdown-content');
+    }
+
+    get cont() {
+        return this.contextMenu;
     }
 }

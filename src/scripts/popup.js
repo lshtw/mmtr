@@ -106,6 +106,7 @@ export class Popup {
                 let div = document.createElement('div');
 
                 anchor.innerHTML = this.phrases.listOfDates + ' &#9776;';
+                anchor.classList.add('toggle-date-list');
                 td2.appendChild(anchor);
                 div.classList.add('date-list');
 
@@ -118,18 +119,18 @@ export class Popup {
 
                     dateElement.addEventListener('contextmenu', (event) => {
                         event.preventDefault();
-
-                        let contextMenu = new ContextMenu(event.target, email, index, this.locale);
+                        console.log(event.offsetX);
+                        console.log(event.offsetY);
+                        let contextMenu = new ContextMenu(event, email, index, this.locale);
 
                         if (document.contains(contextMenu.getContextMenu)) {
                             if (!contextMenu.getContextMenu.contains(event.srcElement)) {
                                 contextMenu.getContextMenu.remove();
                                 this.popupWrapper.onclick = null;
                             }
-                        } else {
-                            event.toElement.appendChild(contextMenu.showMenu());
-                            contextMenu.addHideEvent();
                         }
+                        event.toElement.appendChild(contextMenu.showMenu());
+                        contextMenu.addHideEvent();
                     })
                 });
 
