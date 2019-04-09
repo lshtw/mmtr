@@ -10,7 +10,26 @@
   &__item {
     text-align: center;
     color: black;
-    padding: 8px 0;
+    margin: 8px 0;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #a0a0ff;
+
+      & .delete_item {
+        &:after {
+          color: red;
+        }
+      }
+    }
+
+    & .delete_item {
+      &:after {
+        content: '\2716';
+        font-size: 14px;
+        margin-left: 10px;
+      }
+    }
   }
 }
 .show {

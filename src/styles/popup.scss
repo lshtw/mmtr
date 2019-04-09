@@ -75,7 +75,6 @@
   font-size: 18px;
   margin: 6px 0;
   transition: .5s;
-  position: relative;
 
   &__item {
     width: 90%;
@@ -84,6 +83,7 @@
     opacity: 0;
     transition: .5s;
     cursor: context-menu;
+    position: relative;
   }
 
   &.active {

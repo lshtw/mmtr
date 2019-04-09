@@ -19,8 +19,8 @@ export class ContextMenu {
     init() {
         this.contextMenu = document.createElement('div');
         this.contextMenu.classList.add('dropdown-content');
-        this.contextMenu.style.top = `${event.offsetY}px`;
-        this.contextMenu.style.left = `${event.offsetX}px`;
+        this.contextMenu.style.top = `${event.clientY - event.srcElement.getBoundingClientRect().top}px`;
+        this.contextMenu.style.left = `${event.clientX - event.srcElement.getBoundingClientRect().left}px`;
 
         let deleteItem = document.createElement('div');
         deleteItem.classList.add('dropdown-content__item');

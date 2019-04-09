@@ -119,14 +119,20 @@ export class Popup {
 
                     dateElement.addEventListener('contextmenu', (event) => {
                         event.preventDefault();
-                        console.log(event.offsetX);
-                        console.log(event.offsetY);
+                        event.stopPropagation();
+
                         let contextMenu = new ContextMenu(event, email, index, this.locale);
+
+                        if(contextMenu.cont.contains(event.srcElement)) {
+                            return;
+                        }
 
                         if (document.contains(contextMenu.getContextMenu)) {
                             if (!contextMenu.getContextMenu.contains(event.srcElement)) {
                                 contextMenu.getContextMenu.remove();
                                 this.popupWrapper.onclick = null;
+                            } else {
+                                return;
                             }
                         }
                         event.toElement.appendChild(contextMenu.showMenu());
