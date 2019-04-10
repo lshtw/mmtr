@@ -1,9 +1,9 @@
 import * as moment from 'moment';
-import {Notification} from './notification';
+import Notification from './notification';
 import {getActions} from './actions';
 import {CONSTANTS} from './constants';
 
-export class GetStartedForm {
+export default class GetStartedForm {
 
     constructor() {
         this.init();

@@ -1,6 +1,6 @@
-import {VideoEvent} from './videos.js';
-import {GetStartedForm} from './get-started-form';
-import {Popup} from './popup';
+import VideoEvent from './videos.js';
+import GetStartedForm from './get-started-form';
+import Popup from './popup';
 import {CONSTANTS} from './constants';
 
 window.onload = function () {

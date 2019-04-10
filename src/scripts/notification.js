@@ -1,7 +1,7 @@
 import {getPhrases} from './localization/get-phrases';
 import {getActions} from './actions';
 
-export class Notification {
+export default class Notification {
 
 
     constructor(action = getActions().ADD, locale = 'RU') {

@@ -1,25 +1,28 @@
 import {getPhrases} from './localization/get-phrases';
-import {ContextMenu} from './context-menu';
+import ContextMenu from './context-menu';
 import {getActions} from './actions';
-import {Notification} from './notification';
+import Notification from './notification';
 import {CONSTANTS} from './constants';
 
 let isInit = false;
 
-export class Popup {
+export default class Popup {
 
     constructor(locale = 'RU') {
         this.locale = locale;
         this.phrases = getPhrases()[this.locale];
         this.popupElem = document.createElement('div');
         this.popupElem.classList.add('popup-wrap');
-        this.template = `<div class="popup">
+        this.popupElem.innerHTML = this.popupTemplate;
+    }
+
+
+    get popupTemplate() {
+        return `<div class="popup">
 	                            <h3 class="popup__header">${this.phrases.header}</h3>
 	                                <span class="popup__close" title="Закрыть"></span>
                             </div>`;
-        this.popupElem.innerHTML = this.template;
     }
-
 
     static isInit() {
         return isInit;
@@ -142,7 +145,7 @@ export class Popup {
                                 return;
                             }
                         }
-                        event.toElement.appendChild(contextMenu.showMenu());
+                        event.toElement.appendChild(contextMenu.cont);
                         contextMenu.addHideEvent();
                     })
                 });

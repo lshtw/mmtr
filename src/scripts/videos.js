@@ -1,4 +1,4 @@
-export class VideoEvent {
+export default class VideoEvent {
 
     constructor() {
         this.videos = [...document.getElementsByClassName('video')];

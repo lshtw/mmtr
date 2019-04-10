@@ -1,8 +1,8 @@
 import {getPhrases} from './localization/get-phrases';
-import {Notification} from './notification';
+import Notification from './notification';
 import {getActions} from './actions';
 
-export class ContextMenu {
+export default class ContextMenu {
 
     constructor(event, email, index, locale = 'RU') {
         this.target = event.target;
@@ -24,7 +24,7 @@ export class ContextMenu {
 
         let deleteItem = document.createElement('div');
         deleteItem.classList.add('dropdown-content__item');
-        deleteItem.innerHTML = `<span class="delete_item" data-email="${this.email}" data-id="${this.index}">${this.phrases.remove}</span>`;
+        deleteItem.innerHTML = this.contextMenuTemplate;
 
         this.contextMenu.appendChild(deleteItem);
 
@@ -47,7 +47,6 @@ export class ContextMenu {
     }
 
     showMenu() {
-        this.contextMenu.classList.add('show');
         return this.contextMenu;
     }
 
@@ -66,6 +65,10 @@ export class ContextMenu {
                 wrap.onclick = null;
             }
         };
+    }
+
+    get contextMenuTemplate() {
+        return `<span class="delete_item" data-email="${this.email}" data-id="${this.index}">${this.phrases.remove}</span>`;
     }
 
     get getContextMenu() {

@@ -11,10 +11,12 @@
   pointer-events: auto;
 
   & .popup {
-    width: auto;
+    width: 50%;
     max-height: 60%;
-    min-width: 550px;
+    min-width: 500px;
     position: absolute;
+    min-height: 400px;
+    height: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -23,7 +25,6 @@
     border-radius: 10px;
     background: #fff;
     font-family: 'Brown Light', sans-serif;
-    overflow-y: auto;
 
     &__header {
       margin-bottom: 16px;
@@ -33,6 +34,8 @@
     &-data {
       width: 100%;
       font-size: 18px;
+      overflow-y: auto;
+      max-height: 90%;
       & .button {
         width: 100%;
         line-height: 16px;
@@ -45,12 +48,16 @@
       }
 
       & .row {
-        //vertical-align: baseline;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin-bottom: 10px;
         & * {
           width: 33%;
+          margin-right: 20px;
+          &:nth-last-of-type {
+            margin-right: 0;
+          }
         }
       }
     }
@@ -81,7 +88,6 @@
   width: 100%;
   box-sizing: border-box;
   font-size: 18px;
-  margin: 6px 0;
   transition: .5s;
 
   &__item {

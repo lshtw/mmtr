@@ -1,7 +1,7 @@
 @import 'vars';
 
 .dropdown-content {
-  display: none;
+  display: block;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
@@ -35,7 +35,4 @@
       }
     }
   }
-}
-.show {
-  display: block;
 }
