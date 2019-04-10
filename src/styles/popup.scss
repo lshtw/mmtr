@@ -40,10 +40,18 @@
         font-size: 16px;
         font-family: 'Brown Light';
         padding-bottom: 2px;
+        display: block;
+        margin: 0 auto;
       }
 
-      & .table-row {
-        vertical-align: baseline;
+      & .row {
+        //vertical-align: baseline;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        & * {
+          width: 33%;
+        }
       }
     }
 
@@ -70,7 +78,7 @@
 
 .date-list {
   background: #fff;
-  width: 90%;
+  width: 100%;
   box-sizing: border-box;
   font-size: 18px;
   margin: 6px 0;

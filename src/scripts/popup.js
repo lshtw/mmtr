@@ -63,7 +63,7 @@ export class Popup {
     clickOnDateListElement(event) {
         event.stopPropagation();
 
-        event.target.nextElementSibling.classList.toggle('active');
+        event.target.closest('.row').nextElementSibling.classList.toggle('active');
     }
 
     get popupWrapper() {
@@ -89,17 +89,18 @@ export class Popup {
             return span;
         }
 
-        let table = document.createElement('table');
-        table.classList.add('popup-data');
+        let section = document.createElement('section');
+        section.classList.add('popup-data');
 
         emails.forEach((email) => {
-            let tr = document.createElement('tr'),
-                td1 = document.createElement('td'),
-                td2 = document.createElement('td'),
-                td3 = document.createElement('td');
+            let row = document.createElement('div'),
+                emailDiv = document.createElement('div'),
+                dateDiv = document.createElement('div'),
+                deleteDiv = document.createElement('div');
 
-            tr.classList.add('table-row');
-            td1.innerHTML = email;
+            row.classList.add('row');
+            section.appendChild(row);
+            emailDiv.innerHTML = email;
 
             if (emailsObject[email].length > 1) {
                 let anchor = document.createElement('span');
@@ -107,15 +108,21 @@ export class Popup {
 
                 anchor.innerHTML = this.phrases.listOfDates + ' &#9776;';
                 anchor.classList.add('toggle-date-list');
-                td2.appendChild(anchor);
+                dateDiv.appendChild(anchor);
                 div.classList.add('date-list');
 
                 emailsObject[email].forEach((item, index) => {
+                    let dateRow = document.createElement('div');
                     let dateElement = document.createElement('p');
+                    let deleteIcon = document.createElement('span');
 
                     dateElement.classList.add('date-list__item');
+                    deleteIcon.classList.add('date-list__item-delete');
                     dateElement.innerText = item;
-                    div.appendChild(dateElement);
+
+                    dateRow.appendChild(dateElement);
+                    dateRow.appendChild(deleteIcon);
+                    div.appendChild(dateRow);
 
                     dateElement.addEventListener('contextmenu', (event) => {
                         event.preventDefault();
@@ -140,35 +147,34 @@ export class Popup {
                     })
                 });
 
-                td2.appendChild(div);
+                row.parentElement.appendChild(div);
 
                 anchor.addEventListener('click', this.clickOnDateListElement);
             } else {
-                td2.innerHTML = emailsObject[email];
+                dateDiv.innerHTML = emailsObject[email];
             }
-            td3.innerHTML = `<button class="button" data-name="${email}">${this.phrases.remove}</button>`;
-            td3.firstChild.addEventListener('click', (event) => {
+            deleteDiv.innerHTML = `<button class="button" data-name="${email}">${this.phrases.remove}</button>`;
+            deleteDiv.firstChild.addEventListener('click', (event) => {
                 event.stopPropagation();
 
                 let email = event.srcElement.getAttribute('data-name');
 
                 delete emailsObject[email];
                 localStorage.setItem('emails', JSON.stringify(emailsObject));
-                table.removeChild(event.srcElement.parentNode.parentNode);
+                section.removeChild(event.srcElement.parentNode.parentNode);
                 new Notification(getActions().DELETE, this.locale).showNotification(email);
 
                 if (Object.keys(emailsObject).length === 0) {
-                    table.innerHTML = this.phrases.emptyEmails;
+                    section.innerHTML = this.phrases.emptyEmails;
                     this.popupWrapper.onclick = null;
                 }
             });
 
-            tr.appendChild(td1);
-            tr.appendChild(td2);
-            tr.appendChild(td3);
-            table.appendChild(tr);
+            row.appendChild(emailDiv);
+            row.appendChild(dateDiv);
+            row.appendChild(deleteDiv);
         });
 
-        return table;
+        return section;
     }
 }
