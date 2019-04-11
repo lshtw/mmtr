@@ -89,6 +89,10 @@
   box-sizing: border-box;
   font-size: 18px;
   transition: .5s;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  align-items: center;
 
   &__item {
     width: 90%;
@@ -98,6 +102,23 @@
     transition: .5s;
     cursor: context-menu;
     position: relative;
+    display: inline-block;
+    flex-basis: 50%;
+
+    &-delete {
+      opacity: 0;
+      max-height: 0;
+      cursor: pointer;
+      margin: 0 20px 0 auto;
+
+      &:hover {
+        color: red;
+      }
+
+      &:before {
+        content: '\2716';
+      }
+    }
   }
 
   &.active {
@@ -109,6 +130,11 @@
       max-height: 100%;
       padding: 10px;
       opacity: 1;
+
+      &-delete {
+        opacity: 1;
+        max-height: 100%;
+      }
     }
   }
 }

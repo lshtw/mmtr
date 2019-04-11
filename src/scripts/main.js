@@ -29,3 +29,10 @@ window.onload = function () {
     });
 
 };
+export function getEmailsObject() {
+    return JSON.parse(localStorage.getItem('emails'));
+}
+
+export function getEmails() {
+    return Object.keys(getEmailsObject());
+}
