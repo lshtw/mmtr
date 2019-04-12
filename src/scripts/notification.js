@@ -3,12 +3,14 @@ import {getActions} from './actions';
 
 export default class Notification {
 
+    static _timer;
 
     constructor(action = getActions().ADD, locale = 'RU') {
         this.locale = locale;
         this.phrases = getPhrases()[this.locale];
         this.action = action;
         this.init();
+        clearTimeout(Notification._timer);
     }
 
     init() {
@@ -16,7 +18,7 @@ export default class Notification {
         this.popupElem.classList.add('notification');
 
         let elModal = document.querySelector('.notification');
-        clearTimeout(this.timer);
+
         if (document.body.contains(elModal)) {
             document.body.removeChild(elModal);
         }
@@ -27,7 +29,7 @@ export default class Notification {
         document.body.appendChild(this.popupElem);
         this.popupElem.style.left = `calc(50% - ${this.popupElem.clientWidth / 2}px)`;
 
-        this.timer = setTimeout(() => {
+        Notification._timer = setTimeout(() => {
             document.body.removeChild(this.popupElem);
         }, 3000);
     }
