@@ -1,7 +1,7 @@
 import {getPhrases} from './localization/get-phrases';
 import Notification from './notification';
 import {getActions} from './actions';
-import {getEmailsObject} from "./main";
+import {getEmailsObject, getKey} from './main';
 
 let isShow = false;
 
@@ -14,9 +14,7 @@ export default class ContextMenu {
         this.index = index;
         this.locale = locale;
         this.emailsObject = getEmailsObject();
-        this.dates = JSON.parse(localStorage.getItem('emails'))[this.email];
         this.phrases = getPhrases()[locale];
-        console.log('new instance');
         this.init();
     }
 
@@ -29,11 +27,10 @@ export default class ContextMenu {
         let deleteItem = document.createElement('div');
         deleteItem.classList.add('dropdown-content__item');
         deleteItem.innerHTML = this.contextMenuTemplate;
-
         this.contextMenu.appendChild(deleteItem);
 
         deleteItem.firstChild.addEventListener('click', () => this.deleteItemEvent(event));
-        deleteItem.firstChild.addEventListener('contextmenu',() => this.deleteItemEvent(event));
+        deleteItem.firstChild.addEventListener('contextmenu', () => this.deleteItemEvent(event));
     }
 
     static isShow() {
@@ -48,21 +45,19 @@ export default class ContextMenu {
         event.preventDefault();
         event.stopPropagation();
 
-        console.log(this.index + '  ' + this.email);
         let date = this.emailsObject[this.email][this.index];
 
         this.emailsObject[this.email].splice(this.index, 1);
-        localStorage.setItem('emails', JSON.stringify(this.emailsObject));
+        localStorage.setItem(getKey(), JSON.stringify(this.emailsObject));
 
         if (this.emailsObject[this.email].length === 1) {
-            console.log(this.emailsObject);
             event.srcElement.closest('.date-list').previousElementSibling.children[1].innerHTML = this.emailsObject[this.email][0];
             event.srcElement.closest('.date-list').remove();
         }
 
         this.target.nextElementSibling.remove();
         this.target.remove();
-         ContextMenu.setShow = false;
+        ContextMenu.setShow = false;
 
         new Notification(getActions().DELETE_DATE, this.locale).showNotification(date);
     }
@@ -70,6 +65,7 @@ export default class ContextMenu {
     addHideEvent() {
         let wrap = document.querySelector('.popup-wrap');
 
+        ContextMenu.setShow = true;
         wrap.addEventListener('click', this.hideContextMenuEvent);
     }
 
@@ -91,20 +87,12 @@ export default class ContextMenu {
         return `<span class="delete_item" data-email="${this.email}" data-id="${this.index}">${this.phrases.remove}</span>`;
     }
 
-    // get getContextMenu() {
-    //     return document.querySelector('.dropdown-content');
-    // }
-
     get getContextMenu() {
         return this.contextMenu;
     }
 
-    removeC() {
-        this.event.srcElement.firstElementChild.remove();
-        isShow = false;
-    }
-
     static delete() {
         document.querySelector('.dropdown-content').remove();
+        this.setShow = false;
     }
 }

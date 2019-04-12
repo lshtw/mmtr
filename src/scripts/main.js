@@ -29,8 +29,15 @@ window.onload = function () {
     });
 
 };
+
+export function getKey() {
+    let version = (require('./../../package.json').version);
+
+    return `emails-v${version}`;
+}
+
 export function getEmailsObject() {
-    return JSON.parse(localStorage.getItem('emails'));
+    return JSON.parse(localStorage.getItem(getKey()));
 }
 
 export function getEmails() {

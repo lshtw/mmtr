@@ -17,6 +17,7 @@
 
     &:hover {
       background-color: map_get($colors, button-hover);
+      color: #ffffff;
 
       & .delete_item {
         &:after {

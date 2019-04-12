@@ -3,7 +3,7 @@ import ContextMenu from './context-menu';
 import {getActions} from './actions';
 import Notification from './notification';
 import {CONSTANTS} from './constants';
-import {getEmailsObject, getEmails} from "./main";
+import {getEmailsObject, getEmails, getKey} from './main';
 
 let isInit = false;
 
@@ -15,6 +15,7 @@ export default class Popup {
         this.popupElem = document.createElement('div');
         this.popupElem.classList.add('popup-wrap');
         this.popupElem.innerHTML = this.popupTemplate;
+        this.key = getKey();
     }
 
 
@@ -44,15 +45,15 @@ export default class Popup {
     closeModal() {
         this.popupWrapper.remove();
 
-        // elModal.removeEventListener('click', this.clickPastModal);
         document.body.removeEventListener('keydown', this.clickEscape);
 
         document.body.classList.toggle('overflow-hidden');
         isInit = false;
-        this.popupWrapper.onclick = null;
+        this.popupWrapper.removeEventListener('click', this.clickPastModal);
     }
 
     openModal() {
+        ContextMenu.setShow = false;
         if (!isInit) {
             isInit = true;
             document.body.appendChild(this.popupElem);
@@ -79,12 +80,10 @@ export default class Popup {
         let emails = getEmailsObject();
         let email = event.srcElement.getAttribute('data-email');
         let index = event.srcElement.getAttribute('data-index');
-        console.log(emails);
         let date = emails[email][index];
 
-        console.log(getEmails());
         emails[email].splice(index, 1);
-        localStorage.setItem('emails', JSON.stringify(emails));
+        localStorage.setItem(this.key, JSON.stringify(emails));
 
         if (emails[email].length === 1) {
             event.srcElement.closest('.date-list').previousElementSibling.children[1].innerHTML = emails[email][0];
@@ -95,7 +94,6 @@ export default class Popup {
         event.srcElement.remove();
 
         new Notification(getActions().DELETE_DATE, this.locale).showNotification(date);
-
     }
 
     contextMenuEvent(event, email, index) {
@@ -103,34 +101,17 @@ export default class Popup {
         event.stopPropagation();
 
         if (event.srcElement.classList.contains('dropdown-content')) {
-            console.log('1');
             return;
-        }
-
-        if (!ContextMenu.isShow()) {
-            let contextMenu = new ContextMenu(event, email, index, this.locale);
-            let cont = contextMenu.getContextMenu;
-
-            console.log('0');
-            event.toElement.appendChild(cont);
-            ContextMenu.setShow = true;
-            contextMenu.addHideEvent();
-
-            return;
-        }
-
-
-       else if (!event.srcElement.contains(document.querySelector('.dropdown-content')) && ContextMenu.isShow()) {
-            console.log('3');
-            ContextMenu.delete();
-            ContextMenu.setShow = false;
-            this.popupWrapper.onclick = null;
         }
 
         let contextMenu = new ContextMenu(event, email, index, this.locale);
         let cont = contextMenu.getContextMenu;
+
+        if (ContextMenu.isShow()) {
+            ContextMenu.delete();
+        }
+
         event.toElement.appendChild(cont);
-        ContextMenu.setShow = true;
         contextMenu.addHideEvent();
     }
 
@@ -140,7 +121,7 @@ export default class Popup {
         let email = event.srcElement.getAttribute('data-name');
 
         delete emailsObject[email];
-        localStorage.setItem('emails', JSON.stringify(emailsObject));
+        localStorage.setItem(this.key, JSON.stringify(emailsObject));
         if (event.srcElement.closest('.row').nextElementSibling && event.srcElement.closest('.row').nextElementSibling.classList.contains('date-list')) {
             event.srcElement.closest('.row').nextElementSibling.remove();
         }
@@ -150,14 +131,12 @@ export default class Popup {
 
         if (Object.keys(emailsObject).length === 0) {
             section.innerHTML = this.phrases.emptyEmails;
-            // this.popupWrapper.onclick = null;
         }
     }
 
     get popupWrapper() {
         return this.popupElem;
     }
-
 
     generateEmailList() {
         let emailsObject = getEmailsObject();
