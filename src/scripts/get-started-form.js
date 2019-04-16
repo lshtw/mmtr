@@ -21,17 +21,18 @@ export default class GetStartedForm {
             localStorage.setItem(this.key, JSON.stringify({}));
         }
 
-        this.getStartedForm.addEventListener('submit', () => {
-            this.onSubmit(event)
-        });
+        this.getStartedForm.addEventListener('submit', this.onSubmit.bind(this));
 
-        this.getStartedForm.addEventListener('click', () => {
-            this.emailInput.focus();
-        })
+        this.getStartedForm.addEventListener('click', this.onClick.bind(this));
+    }
+
+    onClick() {
+        this.emailInput.focus();
     }
 
     onSubmit(event) {
         event.preventDefault();
+
         if (!this.emailInput.value) {
             return;
         }

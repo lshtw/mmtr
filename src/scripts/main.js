@@ -11,7 +11,9 @@ window.onload = function () {
     let getStartedForm = new GetStartedForm();
     video.addEvents();
 
-    document.body.addEventListener('keypress', (event) => {
+    document.body.addEventListener('keypress', checkWord.bind(this));
+
+    function checkWord(event) {
         if ((RUMAIL.indexOf(event.key) === word.length || EMAIL.indexOf(event.key) === word.length) && event.target.nodeName !== 'INPUT') {
             word += event.key;
         } else {
@@ -25,9 +27,7 @@ window.onload = function () {
             }
             word = '';
         }
-
-    });
-
+    }
 };
 
 export function getKey() {

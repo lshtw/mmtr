@@ -43,7 +43,7 @@ export default class Popup {
     }
 
     closeModal() {
-        this.popupWrapper.remove();
+        document.body.removeChild(this.popupElem);
 
         document.body.removeEventListener('keydown', this.clickEscape);
 
@@ -57,9 +57,7 @@ export default class Popup {
         if (!isInit) {
             isInit = true;
             document.body.appendChild(this.popupElem);
-            document.querySelector('.popup__close').addEventListener('click', () => {
-                this.closeModal();
-            }, true);
+            document.querySelector('.popup__close').addEventListener('click', this.closeModal.bind(this));
             this.popupWrapper.addEventListener('click', this.clickPastModal);
             document.body.addEventListener('keydown', this.clickEscape);
             document.body.classList.toggle('overflow-hidden');
@@ -96,7 +94,7 @@ export default class Popup {
         new Notification(getActions().DELETE_DATE, this.locale).showNotification(date);
     }
 
-    contextMenuEvent(event, email, index) {
+    contextMenuEvent(email, index, event) {
         event.preventDefault();
         event.stopPropagation();
 
@@ -115,7 +113,7 @@ export default class Popup {
         contextMenu.addHideEvent();
     }
 
-    deleteDateRowEvent(event, section, emailsObject) {
+    deleteDateRowEvent(section, emailsObject, event) {
         event.stopPropagation();
 
         let email = event.srcElement.getAttribute('data-name');
@@ -186,9 +184,7 @@ export default class Popup {
 
                     deleteIcon.addEventListener('click', this.clickDeleteIcon);
 
-                    dateElement.addEventListener('contextmenu', () => {
-                        this.contextMenuEvent(event, email, index);
-                    });
+                    dateElement.addEventListener('contextmenu', this.contextMenuEvent.bind(this, email, index));
                 });
 
                 row.parentElement.appendChild(div);
@@ -199,9 +195,7 @@ export default class Popup {
             }
             deleteDiv.innerHTML = `<button class="button" data-name="${email}">${this.phrases.remove}</button>`;
 
-            deleteDiv.firstChild.addEventListener('click', () => {
-                this.deleteDateRowEvent(event, section, emailsObject)
-            });
+            deleteDiv.firstChild.addEventListener('click', this.deleteDateRowEvent.bind(this, section, emailsObject));
 
             row.appendChild(emailDiv);
             row.appendChild(dateDiv);

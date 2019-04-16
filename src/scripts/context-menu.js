@@ -29,8 +29,8 @@ export default class ContextMenu {
         deleteItem.innerHTML = this.contextMenuTemplate;
         this.contextMenu.appendChild(deleteItem);
 
-        deleteItem.firstChild.addEventListener('click', () => this.deleteItemEvent(event));
-        deleteItem.firstChild.addEventListener('contextmenu', () => this.deleteItemEvent(event));
+        deleteItem.firstChild.addEventListener('click',  this.deleteItemEvent.bind(this));
+        deleteItem.firstChild.addEventListener('contextmenu', this.deleteItemEvent.bind(this));
     }
 
     static isShow() {
