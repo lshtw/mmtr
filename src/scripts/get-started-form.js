@@ -7,7 +7,6 @@ import {getKey} from './main';
 export default class GetStartedForm {
 
     constructor() {
-        this.init();
     }
 
     init() {

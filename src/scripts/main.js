@@ -9,6 +9,7 @@ window.onload = function () {
     let word = '';
     let video = new VideoEvent();
     let getStartedForm = new GetStartedForm();
+    getStartedForm.init();
     video.addEvents();
 
     document.body.addEventListener('keypress', checkWord.bind(this));
@@ -28,6 +29,7 @@ window.onload = function () {
             word = '';
         }
     }
+
 };
 
 export function getKey() {
