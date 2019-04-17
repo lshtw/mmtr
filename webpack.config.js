@@ -1,8 +1,8 @@
-const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const loaders = require('./loaders');
+
 module.exports = {
     entry: {
         'js/app.js': './src/index.js', // scripts
@@ -13,56 +13,32 @@ module.exports = {
         filename: '[name]',
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /(node_modules|bower_components)/,
-            use: {
-                loader: 'babel-loader',
-
-            }
-        },
-            {
-                test: /\.scss$/,
-                use: [
-                    {
-                        loader: 'style-loader' // creates style nodes from JS strings
-                    },
-                    {
-                        loader: 'css-loader' // translates CSS into CommonJS
-                    },
-                    {
-                        loader: 'sass-loader' // compiles Sass to CSS
-                    }
-                    ]
-            },
-            {
-            test: /\.(png|svg|jpg|gif|ttf)$/,
-                use: [
-                     'file-loader'
-                ]
-             },
-       ]
+        rules: [
+            loaders.JSLoader,
+            loaders.ESLintLoader,
+            loaders.SCSSLoader,
+            loaders.FileLoader
+        ]
     },
-     plugins: [
-       //  new CleanWebpackPlugin(['build']),
-         new ExtractTextPlugin({
-             filename: './style/style.css',
-         }),
-         new HtmlWebpackPlugin({
-             inject: false,
-             hash: true,
-             template: './src/index.html',
-             filename: 'index.html'
-         }),
-         new CopyWebpackPlugin([{
-             from: './src/fonts',
-             to: './fonts'
-         },
-             {
-                 from: './src/img',
-                 to: './img'
-             },
-         ]),
+    plugins: [
+        new ExtractTextPlugin({
+            filename: './style/style.css',
+        }),
+        new HtmlWebpackPlugin({
+            inject: false,
+            hash: true,
+            template: './src/index.html',
+            filename: 'index.html'
+        }),
+        new CopyWebpackPlugin([{
+            from: './src/fonts',
+            to: './fonts'
+        },
+        {
+            from: './src/img',
+            to: './img'
+        },
+        ]),
     ],
     devServer: {
         contentBase: __dirname + '/build/'

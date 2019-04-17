@@ -1,7 +1,7 @@
-import {getPhrases} from './localization/get-phrases';
+import { getPhrases } from './localization/get-phrases';
 import Notification from './notification';
-import {getActions} from './actions';
-import {getEmailsObject, getKey} from './main';
+import { getActions } from './actions';
+import { getEmailsObject, getKey } from './main';
 
 let isShow = false;
 

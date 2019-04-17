@@ -1,9 +1,9 @@
-import {getPhrases} from './localization/get-phrases';
+import { getPhrases } from './localization/get-phrases';
 import ContextMenu from './context-menu';
-import {getActions} from './actions';
+import { getActions } from './actions';
 import Notification from './notification';
-import {CONSTANTS} from './constants';
-import {getEmailsObject, getEmails, getKey} from './main';
+import { CONSTANTS } from './constants';
+import { getEmailsObject, getEmails, getKey } from './main';
 
 let isInit = false;
 

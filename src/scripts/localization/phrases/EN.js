@@ -5,15 +5,15 @@ export function phrasesEN() {
         addDate: 'Date added',
         remove: 'delete',
         add: function (email) {
-            return `email ${email} added`
+            return `email ${email} added`;
         },
         delete: function (email) {
-            return `email ${email} deleted`
+            return `email ${email} deleted`;
         },
         emptyEmails: 'no emails',
         listOfDates: 'List of dates',
         deleteDate: function (date) {
-            return `date ${date} deleted`
+            return `date ${date} deleted`;
         }
-    }
+    };
 }

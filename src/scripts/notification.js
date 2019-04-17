@@ -1,5 +1,5 @@
-import {getPhrases} from './localization/get-phrases';
-import {getActions} from './actions';
+import { getPhrases } from './localization/get-phrases';
+import { getActions } from './actions';
 
 export default class Notification {
 

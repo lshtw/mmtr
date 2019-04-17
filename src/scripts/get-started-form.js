@@ -1,8 +1,8 @@
 import * as moment from 'moment';
 import Notification from './notification';
-import {getActions} from './actions';
-import {CONSTANTS} from './constants';
-import {getKey} from './main';
+import { getActions } from './actions';
+import { CONSTANTS } from './constants';
+import { getKey } from './main';
 
 export default class GetStartedForm {
 

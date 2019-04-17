@@ -1,7 +1,7 @@
 import VideoEvent from './videos.js';
 import GetStartedForm from './get-started-form';
 import Popup from './popup';
-import {CONSTANTS} from './constants';
+import { CONSTANTS } from './constants';
 
 window.onload = function () {
     const RUMAIL = CONSTANTS.RUMAIL;
