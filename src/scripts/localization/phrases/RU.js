@@ -14,6 +14,8 @@ export function phrasesRU() {
         listOfDates: 'Список дат',
         deleteDate: function (date) {
             return `дата ${date} удалена`;
-        }
+        },
+        secretWordPlaceholder: 'Секретное слово',
+        save: 'Сохранить'
     };
 }

@@ -1,9 +1,10 @@
-import { getPhrases } from './localization/get-phrases';
+import {getPhrases} from './localization/get-phrases';
 import ContextMenu from './context-menu';
-import { getActions } from './actions';
+import {getActions} from './actions';
 import Notification from './notification';
-import { CONSTANTS } from './constants';
-import { getEmailsObject, getEmails, getKey } from './main';
+import {CONSTANTS} from './constants';
+import {getEmailsObject, getEmails, getKey} from './main';
+// import * as d3 from 'd3';
 
 let isInit = false;
 
@@ -21,8 +22,35 @@ export default class Popup {
 
     get popupTemplate() {
         return `<div class="popup">
-	                            <h3 class="popup__header">${this.phrases.header}</h3>
-	                                <span class="popup__close" title="Закрыть"></span>
+	       <span class="popup__close" title="Закрыть"></span>
+	                               
+	                                 <ul class="tabs">
+   <li class="tabs__item active">
+       Первый таб
+    </li>
+    <li  class="tabs__item">
+       Второй таб
+    </li>
+    <li  class="tabs__item">
+      Третий таб
+    </li>
+</ul>
+<ul class="tabs-content">
+    <li class="tabs-content__item emails-tab">
+      <h3 class="popup__header">${this.phrases.header}</h3>
+    </li>
+    <li class="tabs-content__item">
+       <span>Содержимое второго таба</span>
+    </li>
+    <li class="tabs-content__item word-tab">
+      <form action="/" class="word-tab-form">
+                <input type="text" maxlength="10" name="secret-word" class="word-tab-form__input" placeholder="${this.phrases.secretWordPlaceholder}">
+                <button type="submit" class="button word-tab-form__button">
+                      ${this.phrases.save}
+                </button>
+            </form>
+    </li>
+</ul>
                             </div>`;
     }
 
@@ -57,12 +85,50 @@ export default class Popup {
         if (!isInit) {
             isInit = true;
             document.body.appendChild(this.popupElem);
+
+            let links = document.querySelectorAll('.tabs__item');
+            let content = document.querySelectorAll('.tabs-content__item');
+            let secretForm = document.querySelector('.word-tab-form');
+
             document.querySelector('.popup__close').addEventListener('click', this.closeModal.bind(this));
             this.popupWrapper.addEventListener('click', this.clickPastModal);
             document.body.addEventListener('keydown', this.clickEscape);
             document.body.classList.toggle('overflow-hidden');
-            this.popupWrapper.querySelector('.popup').appendChild(this.generateEmailList());
+            this.popupWrapper.querySelector('.emails-tab').appendChild(this.generateEmailList());
+
+            for (let i = 0; i < links.length; i++) {
+                let link = links[i];
+
+                link.addEventListener('click', this.clickOnTab.bind(this, links, content, i));
+            }
+
+            secretForm.addEventListener('submit', this.submitSecretForm);
+
         }
+    }
+
+    submitSecretForm(event) {
+        event.preventDefault();
+
+        localStorage.setItem('wordEN', event.target['secret-word'].value);
+    }
+
+    clickOnTab(links, content, i, event) {
+        links.forEach((link) => {
+            if (link.classList.contains('active')) {
+                link.classList.remove('active');
+            }
+        });
+
+        event.srcElement.classList.add('active');
+
+        for (let j = 0; j < content.length; j++) {
+            let opacity = window.getComputedStyle(content[j]).opacity;
+            if (opacity === '1') {
+                content[j].style.opacity = '0';
+            }
+        }
+        content[i].style.opacity = '1';
     }
 
     clickOnDateListElement(event) {
@@ -204,4 +270,10 @@ export default class Popup {
 
         return section;
     }
+
+    generateDiagramms() {
+
+    }
+
+
 }

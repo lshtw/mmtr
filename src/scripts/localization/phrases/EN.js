@@ -14,6 +14,8 @@ export function phrasesEN() {
         listOfDates: 'List of dates',
         deleteDate: function (date) {
             return `date ${date} deleted`;
-        }
+        },
+        secretWordPlaceholder: 'Secret word',
+        save: 'Save'
     };
 }
