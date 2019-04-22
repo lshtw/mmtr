@@ -16,6 +16,7 @@ export function phrasesEN() {
             return `date ${date} deleted`;
         },
         secretWordPlaceholder: 'Secret word',
-        save: 'Save'
+        save: 'Save',
+        diagrams: 'Diagrams'
     };
 }

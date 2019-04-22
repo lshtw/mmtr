@@ -4,7 +4,7 @@ import {getActions} from './actions';
 import Notification from './notification';
 import {CONSTANTS} from './constants';
 import {getEmailsObject, getEmails, getKey} from './main';
-// import * as d3 from 'd3';
+import ApexCharts from 'apexcharts';
 
 let isInit = false;
 
@@ -21,37 +21,52 @@ export default class Popup {
 
 
     get popupTemplate() {
-        return `<div class="popup">
+        return `
+       <div class="popup">
 	       <span class="popup__close" title="Закрыть"></span>
-	                               
-	                                 <ul class="tabs">
-   <li class="tabs__item active">
-       Первый таб
-    </li>
-    <li  class="tabs__item">
-       Второй таб
-    </li>
-    <li  class="tabs__item">
-      Третий таб
-    </li>
-</ul>
-<ul class="tabs-content">
-    <li class="tabs-content__item emails-tab">
-      <h3 class="popup__header">${this.phrases.header}</h3>
-    </li>
-    <li class="tabs-content__item">
-       <span>Содержимое второго таба</span>
-    </li>
-    <li class="tabs-content__item word-tab">
-      <form action="/" class="word-tab-form">
-                <input type="text" maxlength="10" name="secret-word" class="word-tab-form__input" placeholder="${this.phrases.secretWordPlaceholder}">
-                <button type="submit" class="button word-tab-form__button">
-                      ${this.phrases.save}
-                </button>
-            </form>
-    </li>
-</ul>
-                            </div>`;
+	           <ul class="tabs">
+                   <li class="tabs__item active">${this.phrases.header}</li>
+                   <li  class="tabs__item">${this.phrases.diagrams}</li>
+                   <li  class="tabs__item">${this.phrases.secretWordPlaceholder}</li>
+               </ul>
+               <ul class="tabs-content">
+                   <li class="tabs-content__item emails-tab">
+                       <h3 class="popup__header">${this.phrases.header}</h3>
+                   </li>
+                   <li class="tabs-content__item">
+                       <div class="chart"></div>
+                       ${this.selectMonthTemplate}
+                   </li>
+                   <li class="tabs-content__item word-tab">
+                       <form action="/" class="word-tab-form">
+                           <input type="text" maxlength="10" name="secret-word" class="word-tab-form__input" placeholder="${this.phrases.secretWordPlaceholder}">
+                           <button type="submit" class="button word-tab-form__button">${this.phrases.save}</button>
+                       </form>
+                   </li>
+               </ul>
+       </div>`;
+    }
+
+
+    get selectMonthTemplate() {
+        return `
+        <div class="months">
+            <select class="months-select">
+                <option value="0">Январь</option>
+                <option value="1">Февраль</option>
+                <option value="2">Март</option>
+                <option value="3">Апрель</option>
+                <option value="4">Май</option>
+                <option value="5">Июнь</option>
+                <option value="6">Июль</option>
+                <option value="7">Август</option>
+                <option value="8">Сентябрь</option>
+                <option value="9">Октябрь</option>
+                <option value="10">Ноябрь</option>
+                <option value="11">Декабрь</option>
+            </select>
+        </div>    
+        `;
     }
 
     static isInit() {
@@ -95,6 +110,7 @@ export default class Popup {
             document.body.addEventListener('keydown', this.clickEscape);
             document.body.classList.toggle('overflow-hidden');
             this.popupWrapper.querySelector('.emails-tab').appendChild(this.generateEmailList());
+            this.generateDiagramms();
 
             for (let i = 0; i < links.length; i++) {
                 let link = links[i];
@@ -273,6 +289,32 @@ export default class Popup {
 
     generateDiagramms() {
 
+        let emailsArray = getEmails();
+        let emailsObject = getEmailsObject();
+
+        let data = emailsArray.map((email) => {
+            return emailsObject[email].length;
+        });
+
+        let options = {
+            chart: {
+                type: 'bar',
+                height: 200
+            },
+            series: [{
+                name: 'sales',
+                data: data
+            }],
+            xaxis: {
+                categories: emailsArray,
+                labels: {
+                    show: false
+                }
+            }
+        };
+
+        let chart1 = new ApexCharts(document.querySelector('.chart'), options);
+        chart1.render();
     }
 
 

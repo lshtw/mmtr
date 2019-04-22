@@ -16,6 +16,7 @@ export function phrasesRU() {
             return `дата ${date} удалена`;
         },
         secretWordPlaceholder: 'Секретное слово',
-        save: 'Сохранить'
+        save: 'Сохранить',
+        diagrams: 'Диаграммы'
     };
 }
