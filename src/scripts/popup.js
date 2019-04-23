@@ -35,7 +35,7 @@ export default class Popup {
                    </li>
                    <li class="tabs-content__item">
                        <div class="chart"></div>
-                       ${this.selectMonthTemplate}
+                       <div>${this.selectMonthTemplate}</div>
                    </li>
                    <li class="tabs-content__item word-tab">
                        <form action="/" class="word-tab-form">
@@ -50,22 +50,44 @@ export default class Popup {
 
     get selectMonthTemplate() {
         return `
-        <div class="months">
-            <select class="months-select">
-                <option value="0">Январь</option>
-                <option value="1">Февраль</option>
-                <option value="2">Март</option>
-                <option value="3">Апрель</option>
-                <option value="4">Май</option>
-                <option value="5">Июнь</option>
-                <option value="6">Июль</option>
-                <option value="7">Август</option>
-                <option value="8">Сентябрь</option>
-                <option value="9">Октябрь</option>
-                <option value="10">Ноябрь</option>
-                <option value="11">Декабрь</option>
-            </select>
-        </div>    
+<form class="months">
+	<ul class="select">
+		<li>
+			<input class="select_close" type="radio" name="awesomeness" id="awesomeness-close" value=""/>
+			<span class="select_label select_label-placeholder">Awesomeness Level</span>
+		</li>
+		
+		<li class="select_items">
+			<input class="select_expand" type="radio" name="awesomeness" id="awesomeness-opener"/>
+			<label class="select_closeLabel" for="awesomeness-close"></label>
+			
+			<ul class="select_options">
+				<li class="select_option">
+					<input class="select_input" type="radio" name="awesomeness" id="awesomeness-ridiculous"/>
+					<label class="select_label" for="awesomeness-ridiculous">ridiculous</label>
+				</li>
+
+				<li class="select_option">
+					<input class="select_input" type="radio" name="awesomeness" id="awesomeness-reasonable"/>
+					<label class="select_label" for="awesomeness-reasonable">reasonable</label>
+				</li>
+
+				<li class="select_option">
+					<input class="select_input" type="radio" name="awesomeness" id="awesomeness-lacking"/>
+					<label class="select_label" for="awesomeness-lacking">lacking</label>
+				</li>
+
+				<li class="select_option">
+					<input class="select_input" type="radio" name="awesomeness" id="awesomeness-awesomeless"/>
+					<label class="select_label" for="awesomeness-awesomeless">awesomeless</label>
+				</li>
+			</ul>
+			
+			<label class="select_expandLabel" for="awesomeness-opener"></label>
+		</li>
+	</ul>
+	
+</form>
         `;
     }
 
